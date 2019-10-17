@@ -1,20 +1,22 @@
-//
-//  ViewController.swift
-//  RevoUIComponents
-//
-//  Created by Jordi Puigdellívol on 17/10/2019.
-//  Copyright © 2019 Revo Systems. All rights reserved.
-//
-
 import UIKit
+import RevoFoundation
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var asyncButton: AsyncButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func onAsyncButtonPressed(_ sender: Any) {
+        asyncButton.animateProgress()
+                
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [unowned self] in
+            self.asyncButton.animateFailed()
+            //self.asyncButton.animateSuccess()            
+        }
+    }
+    
 }
 

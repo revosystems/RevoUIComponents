@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C1608ACE370F1305FB7286D /* Pods_RevoUIComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */; };
 		8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */; };
 		8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */; };
 		8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D732358C39D009CF3D2 /* ViewController.swift */; };
@@ -14,6 +15,9 @@
 		8D9F0D792358C3A0009CF3D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D9F0D782358C3A0009CF3D2 /* Assets.xcassets */; };
 		8D9F0D7C2358C3A0009CF3D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D9F0D7A2358C3A0009CF3D2 /* LaunchScreen.storyboard */; };
 		8D9F0D872358C3A0009CF3D2 /* RevoUIComponentsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D862358C3A0009CF3D2 /* RevoUIComponentsTests.swift */; };
+		8D9F0D932358C3BA009CF3D2 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D922358C3BA009CF3D2 /* AsyncButton.swift */; };
+		8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */; };
+		C6B5A1A21A70A314B0152946 /* Pods_RevoUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		540B36196511EEB9EAC42238 /* Pods-RevoUIComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponents.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents.release.xcconfig"; sourceTree = "<group>"; };
 		8D9F0D6C2358C39D009CF3D2 /* RevoUIComponents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevoUIComponents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +44,12 @@
 		8D9F0D822358C3A0009CF3D2 /* RevoUIComponentsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RevoUIComponentsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9F0D862358C3A0009CF3D2 /* RevoUIComponentsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevoUIComponentsTests.swift; sourceTree = "<group>"; };
 		8D9F0D882358C3A0009CF3D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D9F0D922358C3BA009CF3D2 /* AsyncButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
+		8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
+		9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
+		D577B97B44A8C400B4E69387 /* Pods-RevoUIComponentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.debug.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E2DC0D9AE9E5E3E488C9A3D2 /* Pods-RevoUIComponents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponents.debug.xcconfig"; path = "Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6B5A1A21A70A314B0152946 /* Pods_RevoUIComponents.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C1608ACE370F1305FB7286D /* Pods_RevoUIComponentsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +78,8 @@
 				8D9F0D6E2358C39D009CF3D2 /* RevoUIComponents */,
 				8D9F0D852358C3A0009CF3D2 /* RevoUIComponentsTests */,
 				8D9F0D6D2358C39D009CF3D2 /* Products */,
+				B52620FBF8201D6AFC1EFEDD /* Pods */,
+				A058C01AEC9ECD7428ABA596 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,6 +95,7 @@
 		8D9F0D6E2358C39D009CF3D2 /* RevoUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				8D9F0D912358C3A9009CF3D2 /* src */,
 				8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */,
 				8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */,
 				8D9F0D732358C39D009CF3D2 /* ViewController.swift */,
@@ -99,6 +116,36 @@
 			path = RevoUIComponentsTests;
 			sourceTree = "<group>";
 		};
+		8D9F0D912358C3A9009CF3D2 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8D9F0D922358C3BA009CF3D2 /* AsyncButton.swift */,
+				8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		A058C01AEC9ECD7428ABA596 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */,
+				9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B52620FBF8201D6AFC1EFEDD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E2DC0D9AE9E5E3E488C9A3D2 /* Pods-RevoUIComponents.debug.xcconfig */,
+				540B36196511EEB9EAC42238 /* Pods-RevoUIComponents.release.xcconfig */,
+				D577B97B44A8C400B4E69387 /* Pods-RevoUIComponentsTests.debug.xcconfig */,
+				C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +153,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D9F0D8B2358C3A0009CF3D2 /* Build configuration list for PBXNativeTarget "RevoUIComponents" */;
 			buildPhases = (
+				5F01A38D109A6E48BE20D27F /* [CP] Check Pods Manifest.lock */,
 				8D9F0D682358C39D009CF3D2 /* Sources */,
 				8D9F0D692358C39D009CF3D2 /* Frameworks */,
 				8D9F0D6A2358C39D009CF3D2 /* Resources */,
+				B8F41158A08A5E71B9F89A5E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +172,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8D9F0D8E2358C3A0009CF3D2 /* Build configuration list for PBXNativeTarget "RevoUIComponentsTests" */;
 			buildPhases = (
+				A3D0CBBBDD8AF63379143ECA /* [CP] Check Pods Manifest.lock */,
 				8D9F0D7E2358C3A0009CF3D2 /* Sources */,
 				8D9F0D7F2358C3A0009CF3D2 /* Frameworks */,
 				8D9F0D802358C3A0009CF3D2 /* Resources */,
@@ -195,13 +245,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5F01A38D109A6E48BE20D27F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RevoUIComponents-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3D0CBBBDD8AF63379143ECA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RevoUIComponentsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8F41158A08A5E71B9F89A5E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8D9F0D682358C39D009CF3D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */,
 				8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */,
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
+				8D9F0D932358C3BA009CF3D2 /* AsyncButton.swift in Sources */,
 				8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,6 +476,7 @@
 		};
 		8D9F0D8C2358C3A0009CF3D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2DC0D9AE9E5E3E488C9A3D2 /* Pods-RevoUIComponents.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -378,6 +495,7 @@
 		};
 		8D9F0D8D2358C3A0009CF3D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 540B36196511EEB9EAC42238 /* Pods-RevoUIComponents.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -396,6 +514,7 @@
 		};
 		8D9F0D8F2358C3A0009CF3D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D577B97B44A8C400B4E69387 /* Pods-RevoUIComponentsTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -418,6 +537,7 @@
 		};
 		8D9F0D902358C3A0009CF3D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
