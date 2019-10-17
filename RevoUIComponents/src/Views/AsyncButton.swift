@@ -56,7 +56,7 @@ public class AsyncButton : UIButton {
     func setup(){
         originalTitle = title(for: .normal)
         originalImage = image(for: .normal)
-        progress = CircularProgress(frame: bounds)
+        progress      = CircularProgress(frame: bounds)
         progress.tintColor = self.tintColor
         addSubview(progress)
     }
