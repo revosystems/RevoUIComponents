@@ -7,6 +7,7 @@ class PinViewController : UIViewController {
     var stack:UIStackView!
     
     let dotSize:CGFloat = 12.0
+    let buttonSize:CGFloat = 80
     
     override func viewDidLoad() {
         view.backgroundColor = UIColor.gray
@@ -60,10 +61,10 @@ class PinViewController : UIViewController {
             row.distribution = .fillEqually
             row.spacing = 30
             Array(0..<3).each { count2 in
-                let button                 = UIButton(widthConstraint: CGFloat(50), heightConstraint: 50)
+                let button                 = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
                 button.layer.borderWidth   = 1  //TODO: Use .border() when RevoFoundation updated
                 button.layer.borderColor   = UIColor.white.cgColor
-                button.round(25) //TODO: Change for .circle() when RevoFoundation updated
+                button.round(buttonSize/2) //TODO: Change for .circle() when RevoFoundation updated
                 button.setTitle(str("%d",count * 3 + count2 + 1), for: .normal)
                 button.setTitleColor(.white, for: .normal)
                 row.addArrangedSubview(button)
