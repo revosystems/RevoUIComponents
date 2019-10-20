@@ -50,12 +50,12 @@ public class CircularProgress : UIView {
     public func start(){
         percent = 45;
         
-        if ( layer.animation(forKey: ANIMATION_KEY) != nil ) {
+        if (layer.animation(forKey: ANIMATION_KEY) != nil) {
             return
         }
         
         let animation           = CABasicAnimation(keyPath: ANIMATION_KEY)
-        animation.toValue       = ( Double.pi * 2)
+        animation.toValue       = Double.pi * 2
         animation.duration      = 0.5
         animation.isCumulative  = true
         animation.repeatCount   = 1000

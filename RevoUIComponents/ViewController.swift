@@ -18,5 +18,9 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func onShowPinPressed(_ sender: Any) {
+        let pin = PinViewController()
+        self.present(pin, animated: true, completion: nil)
+    }
 }
 
