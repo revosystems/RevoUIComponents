@@ -24,14 +24,24 @@ extension UIView {
             }
         }
     }
+    
+    @discardableResult public func equalSizeAs(_ view:UIView) -> UIView{
+        self.translatesAutoresizingMaskIntoConstraints = false
+        let horitzontal = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0.0)
+        let vertical    = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1, constant: 0.0)
+        let width       = NSLayoutConstraint(item: self, attribute: .width,   relatedBy: .equal, toItem: view, attribute: .width,   multiplier: 1, constant: 0.0)
+        let height      = NSLayoutConstraint(item: self, attribute: .height,  relatedBy: .equal, toItem: view, attribute: .height,  multiplier: 1, constant: 0.0)
+        NSLayoutConstraint.activate([horitzontal, vertical, width, height])
+        return self
+    }
   
     private func setConstraint(value: CGFloat, attribute: NSLayoutConstraint.Attribute) {
         removeConstraint(attribute: attribute)
         let constraint = NSLayoutConstraint(item: self,
                          attribute: attribute,
-                         relatedBy: NSLayoutConstraint.Relation.equal,
+                         relatedBy: .equal,
                          toItem: nil,
-                         attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+                         attribute: .notAnAttribute,
                          multiplier: 1,
                          constant: value)
         self.addConstraint(constraint)

@@ -38,6 +38,8 @@ class PinViewController : UIViewController {
         stack.axis         = .vertical
         stack.alignment    = .center
         stack.distribution = .fillProportionally
+        view.addSubview(stack)
+        stack.equalSizeAs(view)        
     }
     
     private func addTitle(){
@@ -46,7 +48,6 @@ class PinViewController : UIViewController {
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = .center
         stack.addArrangedSubview(titleLabel)
-        view.addSubview(stack)
     }
     
     private func addDots(){
@@ -78,10 +79,10 @@ class PinViewController : UIViewController {
     
     private func addButtons(){
         
-        let buttonsVerticalStack = UIStackView()
-        buttonsVerticalStack.axis = .vertical
-        buttonsVerticalStack.alignment = .center
-        buttonsVerticalStack.distribution = .fillEqually
+        let buttonsVerticalStack            = UIStackView()
+        buttonsVerticalStack.axis           = .vertical
+        buttonsVerticalStack.alignment      = .center
+        buttonsVerticalStack.distribution   = .fillEqually
         
         Array(0..<3).each { count in
             let row         = UIStackView()
@@ -154,7 +155,7 @@ class PinViewController : UIViewController {
             return onWrongPin()
         }
         if (completion(enteredPin)){
-            
+            onRightPin()
         }
         onWrongPin()
     }
@@ -164,6 +165,10 @@ class PinViewController : UIViewController {
         colorAnimation.fromValue    = UIColor.white.cgColor
         colorAnimation.duration     = 0.3  // animation duration
         sender.layer.add(colorAnimation, forKey: "ColorPulse")
+    }
+    
+    private func onRightPin(){
+        dismiss(animated: true)
     }
     
     private func onWrongPin(){
