@@ -19,6 +19,7 @@
 		8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */; };
 		8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D982358D6AC009CF3D2 /* PinViewController.swift */; };
 		8DCE0CC4235C6E220044EBA8 /* UIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */; };
+		8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE0CC6235F399D0044EBA8 /* Toast.swift */; };
 		C6B5A1A21A70A314B0152946 /* Pods_RevoUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
 		8D9F0D982358D6AC009CF3D2 /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewConstraints.swift; sourceTree = "<group>"; };
+		8DCE0CC6235F399D0044EBA8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D577B97B44A8C400B4E69387 /* Pods-RevoUIComponentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.debug.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 		8D9F0D912358C3A9009CF3D2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				8DCE0CC5235F39930044EBA8 /* Components */,
 				8DCE0CC2235C6E110044EBA8 /* Extensions */,
 				8D9F0D972358D6A0009CF3D2 /* Controllers */,
 				8D9F0D962358D697009CF3D2 /* Views */,
@@ -153,6 +156,14 @@
 				8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8DCE0CC5235F39930044EBA8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8DCE0CC6235F399D0044EBA8 /* Toast.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A058C01AEC9ECD7428ABA596 /* Frameworks */ = {
@@ -344,6 +355,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */,
+				8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */,
 				8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */,
 				8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */,
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
