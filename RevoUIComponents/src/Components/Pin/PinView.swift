@@ -1,5 +1,14 @@
 import UIKit
 
+protocol PinViewAppearanceDelegate {
+    func pinView(configureButton:UIButton, size:CGFloat)
+    func pinView(shouldBlink:UIButton) -> Bool
+}
+
+extension PinViewAppearanceDelegate {
+    func pinView(shouldBlink:UIButton) -> Bool { true }
+}
+
 class PinView : UIView {
     
     var length:Int = 4
@@ -7,6 +16,8 @@ class PinView : UIView {
     let buttonSize:CGFloat  = 80
     
     var isPinValid: ((_ pin:String)->Bool)!
+    
+    var appearanceDelegate:PinViewAppearanceDelegate?
     
     private var stack:UIStackView!
     private var dotsStackView:UIStackView!
@@ -19,26 +30,16 @@ class PinView : UIView {
             }
         }
     }
-    
-    override init(frame: CGRect) {
-      super.init(frame: frame)
-      setup()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-      super.init(coder: aDecoder)
-      setup()
-    }
-    
+        
     public func clear(){
         if (enteredPin.count == 0) { return }
         enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
     }
     
-    private func setup(){
+    func setup(){
         createMainStack()
         addDots()
-        stack.addArrangedSubview(UIView(widthConstraint: 50, heightConstraint: 20))
+        stack.addArrangedSubview(UIView().height(constant: 80))
         addButtons()
     }
     
@@ -69,11 +70,9 @@ class PinView : UIView {
     }
     
     private func updateDots(){
-        DispatchQueue.main.async{ [unowned self] in
-            let dots = self.dotsStackView.subviews
-            dots.each { $0.backgroundColor = UIColor.clear }
-            Array(0..<self.enteredPin.count).each { dotIndex in
-                dots[dotIndex].backgroundColor = UIColor.white
+        UIView.animate(withDuration: 0.2) { [unowned self] in
+            self.dotsStackView.subviews.eachWithIndex { (dot, index) in
+                dot.backgroundColor = index < self.enteredPin.count ? .white : .clear
             }
         }
     }
@@ -85,49 +84,38 @@ class PinView : UIView {
         buttonsVerticalStack.alignment      = .center
         buttonsVerticalStack.distribution   = .fillEqually
         
-        Array(0..<3).each { count in
+        Array(0..<4).each { count in
             let row         = UIStackView()
             row.axis        = .horizontal
             row.alignment   = .center
             row.distribution = .fillEqually
             row.spacing     = 30
-            Array(0..<3).each { count2 in
-                row.addArrangedSubview(createNumberButton(count * 3 + count2 + 1))
+            if(count < 3){
+                Array(0..<3).each { count2 in
+                    row.addArrangedSubview(createNumberButton(count * 3 + count2 + 1))
+                }
+            }else{
+                row.addArrangedSubview(createNumberButton(0))
             }
             buttonsVerticalStack.addArrangedSubview(row)
         }
         stack.addArrangedSubview(buttonsVerticalStack)
-        addLastRowButtons(buttonsVerticalStack)
-    }
-    
-    private func addLastRowButtons(_ buttonsVerticalStack:UIStackView){
-        let row         = UIStackView()
-        row.axis        = .horizontal
-        row.alignment   = .center
-        row.distribution = .fillEqually
-        row.spacing     = 30
-
-        row.addArrangedSubview(createNumberButton(0))
-        
-        buttonsVerticalStack.addArrangedSubview(row)
     }
     
     private func createNumberButton(_ number:Int) -> UIButton {
-        let button                 = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
-        button.layer.borderWidth   = 1  //TODO: Use .border() when RevoFoundation updated
-        button.layer.borderColor   = UIColor.white.cgColor
-        button.round(buttonSize/2) //TODO: Change for .circle() when RevoFoundation updated
+        let button = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
         button.setTitle("\(number)", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 25)
-        button.setTitleColor(.white, for: .normal)
         button.tag = number
         button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
+        appearanceDelegate?.pinView(configureButton: button, size:buttonSize)
         return button
     }
     
     @objc private func onButtonPressed(_ sender:UIButton){
         enteredPin.append("\(sender.tag)")
-        animateButton(sender)
+        if (appearanceDelegate?.pinView(shouldBlink: sender) ?? true){
+            animateButton(sender)
+        }
     }
     
     private func onPinComplete(){
