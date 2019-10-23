@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     
     @IBAction func onShowPinPressed(_ sender: Any) {
         let pin = PinViewController()
-        pin.completion = { $0 == "0000" }
+        pin.isPinValid = { $0 == "0000" }
         self.present(pin, animated: true, completion: nil)
     }
 }

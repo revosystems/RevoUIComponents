@@ -1,16 +1,15 @@
 import UIKit
-import RevoFoundation
 
-class PinViewController : UIViewController {
+class PinView : UIView {
     
     var length:Int = 4
-    var stack:UIStackView!
-    var dotsStackView:UIStackView!
+    let dotSize:CGFloat     = 12.0
+    let buttonSize:CGFloat  = 80
     
-    let dotSize:CGFloat = 12.0
-    let buttonSize:CGFloat = 80
+    var isPinValid: ((_ pin:String)->Bool)!
     
-    var completion: ((_ pin:String)->Bool)!
+    private var stack:UIStackView!
+    private var dotsStackView:UIStackView!
     
     var enteredPin = "" {
         didSet {
@@ -21,37 +20,39 @@ class PinViewController : UIViewController {
         }
     }
     
-    override func viewDidLoad() {
-        view.backgroundColor = UIColor.gray
-        createMainStackView()
-        stack.addArrangedSubview(UIView(widthConstraint: 50, heightConstraint: 80))
-        addTitle()
-        stack.addArrangedSubview(UIView(widthConstraint: 50, heightConstraint: 20))
+    override init(frame: CGRect) {
+      super.init(frame: frame)
+      setup()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+      super.init(coder: aDecoder)
+      setup()
+    }
+    
+    public func clear(){
+        if (enteredPin.count == 0) { return }
+        enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
+    }
+    
+    private func setup(){
+        createMainStack()
         addDots()
         stack.addArrangedSubview(UIView(widthConstraint: 50, heightConstraint: 20))
         addButtons()
-        stack.addArrangedSubview(UIView(widthConstraint: 50, heightConstraint: 150))
     }
     
-    private func createMainStackView(){
-        stack              = UIStackView(frame: view.bounds)
+    private func createMainStack(){
+        stack              = UIStackView(frame: bounds)
         stack.axis         = .vertical
         stack.alignment    = .center
         stack.distribution = .fillProportionally
-        view.addSubview(stack)
-        stack.equalSizeAs(view)        
-    }
-    
-    private func addTitle(){
-        let titleLabel     = UILabel()
-        titleLabel.text    = self.title ?? "PIN"
-        titleLabel.textColor = UIColor.white
-        titleLabel.textAlignment = .center
-        stack.addArrangedSubview(titleLabel)
+        addSubview(stack)
+        stack.equalSizeAs(self)
     }
     
     private func addDots(){
-        dotsStackView               = UIStackView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width, height: 50))
+        dotsStackView               = UIStackView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 50))
         dotsStackView.axis          = .horizontal
         dotsStackView.distribution  = .fillEqually
         dotsStackView.spacing       = 20
@@ -99,50 +100,29 @@ class PinViewController : UIViewController {
         addLastRowButtons(buttonsVerticalStack)
     }
     
-    private func createNumberButton(_ number:Int) -> UIButton {
-        let button                 = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
-        button.layer.borderWidth   = 1  //TODO: Use .border() when RevoFoundation updated
-        button.layer.borderColor   = UIColor.white.cgColor
-        button.round(buttonSize/2) //TODO: Change for .circle() when RevoFoundation updated
-        button.setTitle(str("%d",number), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 25)
-        button.setTitleColor(.white, for: .normal)
-        button.tag = number
-        button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
-        return button
-    }
-    
     private func addLastRowButtons(_ buttonsVerticalStack:UIStackView){
         let row         = UIStackView()
         row.axis        = .horizontal
         row.alignment   = .center
         row.distribution = .fillEqually
         row.spacing     = 30
-        Array(0..<3).each { count in
-            if(count == 0){
-                let button                 = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
-                button.setTitle("Cancel", for: .normal)
-                button.addTarget(self, action: #selector(onCancelPressed), for: .touchUpInside)
-                row.addArrangedSubview(button)
-            }else if(count == 1){
-                row.addArrangedSubview(createNumberButton(0))
-            }else if(count == 2){
-                let button                 = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
-                button.setTitle("Delete", for: .normal)
-                button.addTarget(self, action: #selector(onDeletePressed), for: .touchUpInside)
-                row.addArrangedSubview(button)
-            }
-        }
+
+        row.addArrangedSubview(createNumberButton(0))
+        
         buttonsVerticalStack.addArrangedSubview(row)
     }
     
-    @objc private func onCancelPressed(_ sender:UIButton){
-        
-    }
-    
-    @objc private func onDeletePressed(_ sender:UIButton){
-        if (enteredPin.count == 0) { return }
-        enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
+    private func createNumberButton(_ number:Int) -> UIButton {
+        let button                 = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
+        button.layer.borderWidth   = 1  //TODO: Use .border() when RevoFoundation updated
+        button.layer.borderColor   = UIColor.white.cgColor
+        button.round(buttonSize/2) //TODO: Change for .circle() when RevoFoundation updated
+        button.setTitle("\(number)", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 25)
+        button.setTitleColor(.white, for: .normal)
+        button.tag = number
+        button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
+        return button
     }
     
     @objc private func onButtonPressed(_ sender:UIButton){
@@ -151,10 +131,10 @@ class PinViewController : UIViewController {
     }
     
     private func onPinComplete(){
-        guard let completion = completion else {
+        guard let isPinValid = isPinValid else {
             return onWrongPin()
         }
-        if (completion(enteredPin)){
+        if (isPinValid(enteredPin)){
             onRightPin()
         }
         onWrongPin()
@@ -168,7 +148,7 @@ class PinViewController : UIViewController {
     }
     
     private func onRightPin(){
-        dismiss(animated: true)
+        //dismiss(animated: true)
     }
     
     private func onWrongPin(){
@@ -177,5 +157,3 @@ class PinViewController : UIViewController {
     }
     
 }
-
-
