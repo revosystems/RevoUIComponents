@@ -1,10 +1,10 @@
 import UIKit
 
-@objc protocol ContentStatusActionDelegate{
+@objc public protocol ContentStatusActionDelegate{
     @objc func onContentStatusAction(_ sender:UIButton)
 }
 
-enum ContentStatus{
+public enum ContentStatus{
     
     case loading(text:String = "Loading")
     case empty(text:String, image:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?)
@@ -92,7 +92,7 @@ enum ContentStatus{
 }
 
 open class ContentStatusView: UIView {
-    var state:ContentStatus = .content {
+    public var state:ContentStatus = .content {
         didSet {
             updateContentStatusView()
         }
@@ -112,7 +112,7 @@ open class ContentStatusView: UIView {
 
 open class ContentStatusTableView: UITableView {
         
-    var state:ContentStatus = .content {
+    public var state:ContentStatus = .content {
         didSet {
             reloadData()
         }
