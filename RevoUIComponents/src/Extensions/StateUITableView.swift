@@ -1,14 +1,22 @@
 import UIKit
 
+@objc protocol ContentStatusActionDelegate{
+    @objc func onContentStatusAction(_ sender:UIButton)
+}
+
 enum ContentStatus{
-    case loading, empty, content, error
-        
+    
+    case loading(text:String = "Loading")
+    case empty(text:String, image:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?)
+    case content
+    case error(text:String, image:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?)
+            
     var statusView : UIView? {
         switch self{
-            case .loading:  return loadingView()
-            case .empty:    return emptyView()
-            case .error:    return errorView()
-            default:        return nil
+        case let .loading(text):   return loadingView(text)
+        case let .empty(text, image, actionTitle, delegate):    return emptyView(text, image:image, actionTitle:actionTitle, delegate:delegate)
+        case let .error(text, image, actionTitle, delegate):    return errorView(text, image:image, actionTitle:actionTitle, delegate:delegate)
+        default:        return nil
         }
     }
     
@@ -41,47 +49,45 @@ enum ContentStatus{
         return stack
     }
         
-    func loadingView() -> UIView{
+    func loadingView(_ text:String) -> UIView{
         tap(UIView()) {
             let loading = UIActivityIndicatorView()
             loading.startAnimating()
                         
             let vStack           = VStack()
             vStack.addArrangedSubview(loading)
-            vStack.addArrangedSubview(descriptionLabel("Loading..."))
+            vStack.addArrangedSubview(descriptionLabel(text))
             $0.addSubview(vStack)
             vStack.centerToSuperview()
         }
     }
     
-    func emptyView() -> UIView {
+    func richView(_ text:String? = "No Records", image:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?) -> UIView {
         tap(UIView()) {
-            let button          = UIButton()
-            button.setTitle("Do something", for: .normal)
-            
-            let vStack           = VStack()
-            vStack.addArrangedSubview(descriptionLabel("No records"))
-            vStack.addArrangedSubview(button)
+            let vStack = VStack()
             $0.addSubview(vStack)
             vStack.centerToSuperview()
+            
+            if (text != nil) {
+                vStack.addArrangedSubview(descriptionLabel(text!))
+            }
+            
+            if (actionTitle != nil) {
+                let button = UIButton()
+                button.setTitle(actionTitle!, for: .normal)
+                vStack.addArrangedSubview(button)
+                button.addTarget(delegate, action: #selector(ContentStatusActionDelegate.onContentStatusAction), for: .touchUpInside)
+            }
         }
     }
+
     
-    func errorView() -> UIView{
-        tap(UIView()) {
-            let label           = descriptionLabel("Error")
-            label.text          = "Error"
-            
-            let button          = UIButton()
-            button.setTitle("Do something", for: .normal)
-            
-            let vStack           = VStack()
-            
-            vStack.addArrangedSubview(label)
-            vStack.addArrangedSubview(button)
-            $0.addSubview(vStack)
-            vStack.centerToSuperview()
-        }
+    func emptyView(_ text:String = "No Records", image:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?) -> UIView {
+        richView(text, image:image, actionTitle: actionTitle, delegate:delegate)
+    }
+    
+    func errorView(_ text:String = "Error", image:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?) -> UIView {
+        richView(text, image:image, actionTitle: actionTitle, delegate:delegate)
     }
 }
 
