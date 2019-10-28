@@ -4,7 +4,8 @@ import RevoFoundation
 class ViewController: UIViewController {
 
     @IBOutlet weak var asyncButton: AsyncButton!
-    @IBOutlet weak var stateTableView: StateUITableView!
+    @IBOutlet weak var stateTableView: ContentStatusTableView!
+    @IBOutlet weak var stateView: ContentStatusView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +18,12 @@ class ViewController: UIViewController {
             self.asyncButton.animateFailed()
             //self.asyncButton.animateSuccess()
             self.stateTableView.state = .empty
+            self.stateView.state      = .empty
         }
         
         stateTableView.state = .loading
+        stateView.state = .loading
+        
     }
     
     @IBAction func onShowPinPressed(_ sender: Any) {

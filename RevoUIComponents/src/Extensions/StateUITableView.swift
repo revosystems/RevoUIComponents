@@ -1,12 +1,112 @@
 import UIKit
 
-open class StateUITableView: UITableView {
-    
-    enum State{
-        case loading, empty, content, error
+enum ContentStatus{
+    case loading, empty, content, error
+        
+    var statusView : UIView? {
+        switch self{
+            case .loading:  return loadingView()
+            case .empty:    return emptyView()
+            case .error:    return errorView()
+            default:        return nil
+        }
     }
     
-    var state:State = .empty {
+    func titleLabel(_ text:String) -> UILabel {
+        let label           = UILabel()
+        label.font          = UIFont.preferredFont(forTextStyle: .headline)
+        label.textColor     = .darkGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = text
+        return label
+    }
+    
+    func descriptionLabel(_ text:String) -> UILabel {
+        let label           = UILabel()
+        label.font          = UIFont.preferredFont(forTextStyle: .caption1)
+        label.textColor     = .lightGray
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        label.text = text
+        return label
+    }
+      
+    func VStack() -> UIStackView {
+        let stack           = UIStackView()
+        stack.axis          = .vertical
+        stack.alignment     = .center
+        stack.distribution  = .fillProportionally
+        stack.spacing       = 10
+        return stack
+    }
+        
+    func loadingView() -> UIView{
+        tap(UIView()) {
+            let loading = UIActivityIndicatorView()
+            loading.startAnimating()
+                        
+            let vStack           = VStack()
+            vStack.addArrangedSubview(loading)
+            vStack.addArrangedSubview(descriptionLabel("Loading..."))
+            $0.addSubview(vStack)
+            vStack.centerToSuperview()
+        }
+    }
+    
+    func emptyView() -> UIView {
+        tap(UIView()) {
+            let button          = UIButton()
+            button.setTitle("Do something", for: .normal)
+            
+            let vStack           = VStack()
+            vStack.addArrangedSubview(descriptionLabel("No records"))
+            vStack.addArrangedSubview(button)
+            $0.addSubview(vStack)
+            vStack.centerToSuperview()
+        }
+    }
+    
+    func errorView() -> UIView{
+        tap(UIView()) {
+            let label           = descriptionLabel("Error")
+            label.text          = "Error"
+            
+            let button          = UIButton()
+            button.setTitle("Do something", for: .normal)
+            
+            let vStack           = VStack()
+            
+            vStack.addArrangedSubview(label)
+            vStack.addArrangedSubview(button)
+            $0.addSubview(vStack)
+            vStack.centerToSuperview()
+        }
+    }
+}
+
+open class ContentStatusView: UIView {
+    var state:ContentStatus = .content {
+        didSet {
+            updateContentStatusView()
+        }
+    }
+    
+    var statusView:UIView?
+    
+    func updateContentStatusView(){
+        if (statusView != nil) { statusView!.removeFromSuperview() }
+        statusView = state.statusView
+        if(statusView == nil) { return }
+        statusView?.backgroundColor = backgroundColor
+        addSubview(statusView!)
+        statusView?.bindFrameToSuperviewBounds()
+    }
+}
+
+open class ContentStatusTableView: UITableView {
+        
+    var state:ContentStatus = .content {
         didSet {
             reloadData()
         }
@@ -14,54 +114,10 @@ open class StateUITableView: UITableView {
     
     public override func reloadData() {
         super.reloadData()
-        switch(state){
-            case .loading: do{
-                self.backgroundView = self.loadingView()
-                self.tableFooterView = UIView()
-            }
-            case .empty: do {
-                self.backgroundView = self.emptyView()
-                self.tableFooterView = UIView()
-            }
-            case .error: do{
-                self.backgroundView = self.errorView()
-                self.tableFooterView = UIView()
-            }
-            default: do {
-            
-            }
-        }
+        self.backgroundView     = state.statusView
+        self.backgroundView?.backgroundColor = backgroundColor
         self.backgroundView?.backgroundColor = .red
-    }
-    
-    func loadingView() -> UIView{
-        tap(UIView()) {
-            let label           = UILabel()
-            label.text          = "Loading..."
-            label.textAlignment = .center
-            $0.addSubview(label)
-            label.bindFrameToSuperviewBounds()
-        }
-    }
-    
-    func emptyView() -> UIView {
-        tap(UIView()) {
-            let label           = UILabel()
-            label.text          = "No records"
-            label.textAlignment = .center
-            $0.addSubview(label)
-            label.bindFrameToSuperviewBounds()
-        }
-    }
-    
-    func errorView() -> UIView{
-        tap(UIView()) {
-            let label           = UILabel()
-            label.text          = "Error"
-            label.textAlignment = .center
-            $0.addSubview(label)
-            label.bindFrameToSuperviewBounds()
-        }
+        self.tableFooterView    = UIView()
     }
     
 }
