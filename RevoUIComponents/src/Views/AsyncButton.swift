@@ -81,6 +81,9 @@ public class AsyncButton : UIButton {
     }
     
     func addCompletionImage(_ imageName:String, _ color:UIColor){
+        guard #available(iOS 13, *) else {
+            return
+        }
         completionImage                = UIImageView(image: UIImage(systemName: imageName))
         completionImage!.contentMode   = .scaleAspectFit
         completionImage!.frame         = self.bounds.insetBy(dx: 3, dy: 3)
