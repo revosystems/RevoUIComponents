@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3C1608ACE370F1305FB7286D /* Pods_RevoUIComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */; };
 		76C07EE82360D82B00D59DF6 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EE72360D82B00D59DF6 /* PinView.swift */; };
+		76C07EEA2366341800D59DF6 /* StateUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EE92366341800D59DF6 /* StateUITableView.swift */; };
 		8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */; };
 		8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */; };
 		8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D732358C39D009CF3D2 /* ViewController.swift */; };
@@ -38,6 +39,7 @@
 		4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540B36196511EEB9EAC42238 /* Pods-RevoUIComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponents.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents.release.xcconfig"; sourceTree = "<group>"; };
 		76C07EE72360D82B00D59DF6 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
+		76C07EE92366341800D59DF6 /* StateUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateUITableView.swift; sourceTree = "<group>"; };
 		8D9F0D6C2358C39D009CF3D2 /* RevoUIComponents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevoUIComponents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */,
+				76C07EE92366341800D59DF6 /* StateUITableView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */,
 				8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */,
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
+				76C07EEA2366341800D59DF6 /* StateUITableView.swift in Sources */,
 				76C07EE82360D82B00D59DF6 /* PinView.swift in Sources */,
 				8D9F0D932358C3BA009CF3D2 /* AsyncButton.swift in Sources */,
 				8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */,
