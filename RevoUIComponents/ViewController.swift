@@ -17,7 +17,7 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [unowned self] in
             self.asyncButton.animateFailed()
             //self.asyncButton.animateSuccess()
-            self.stateTableView.state = .empty(text:"Empty", image:nil, actionTitle:"Do Something", delegate:self)
+            self.stateTableView.state = .empty(image:nil, title:"Empty", description:"Add Something", actionTitle:"Do Something", delegate:self)
             self.stateView.state      = .content
         }
         
