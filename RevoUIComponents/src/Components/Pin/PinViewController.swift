@@ -1,11 +1,6 @@
 import UIKit
 import RevoFoundation
 
-func tap<T>(_ value:T, _ block:(_ value:T) -> Void) -> T {   //TODO: Move when in foundation
-    block(value)
-    return value
-}
-
 class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     var canCancel = false
