@@ -63,14 +63,14 @@ public class AsyncButton : UIButton {
     
     func resetAfterDelay(){
         progress.stop()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [unowned self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { [weak self] in
             DispatchQueue.main.async{
-                self.reset()
+                self?.reset()
             }
         }
     }
     
-    func reset(){
+    public func reset(){
         progress.stop()
         isEnabled = true
         setTitle(originalTitle, for: .normal)
