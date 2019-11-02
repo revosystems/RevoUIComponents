@@ -1,4 +1,5 @@
 import UIKit
+import RevoFoundation
 
 @objc public protocol ContentStatusActionDelegate{
     @objc func onContentStatusAction(_ sender:UIButton)
