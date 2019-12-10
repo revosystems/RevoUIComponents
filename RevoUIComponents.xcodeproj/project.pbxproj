@@ -11,6 +11,7 @@
 		76C07EE82360D82B00D59DF6 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EE72360D82B00D59DF6 /* PinView.swift */; };
 		76C07EEA2366341800D59DF6 /* ContentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EE92366341800D59DF6 /* ContentStatus.swift */; };
 		76C07EEE23683CBA00D59DF6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EED23683CBA00D59DF6 /* UIColorExtension.swift */; };
+		8D3B0C9523A00865003C1847 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3B0C9423A00865003C1847 /* UIImageViewExtension.swift */; };
 		8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */; };
 		8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */; };
 		8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D732358C39D009CF3D2 /* ViewController.swift */; };
@@ -42,6 +43,7 @@
 		76C07EE72360D82B00D59DF6 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		76C07EE92366341800D59DF6 /* ContentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStatus.swift; sourceTree = "<group>"; };
 		76C07EED23683CBA00D59DF6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		8D3B0C9423A00865003C1847 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
 		8D9F0D6C2358C39D009CF3D2 /* RevoUIComponents.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevoUIComponents.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9F0D6F2358C39D009CF3D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D9F0D712358C39D009CF3D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */,
 				76C07EED23683CBA00D59DF6 /* UIColorExtension.swift */,
+				8D3B0C9423A00865003C1847 /* UIImageViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 			files = (
 				8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */,
 				8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */,
+				8D3B0C9523A00865003C1847 /* UIImageViewExtension.swift in Sources */,
 				8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */,
 				8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */,
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
