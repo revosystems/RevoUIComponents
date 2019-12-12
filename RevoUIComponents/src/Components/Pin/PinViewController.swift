@@ -1,7 +1,7 @@
 import UIKit
 import RevoFoundation
 
-class PinViewController : UIViewController, PinViewAppearanceDelegate {
+public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     var canCancel = false
     
@@ -9,11 +9,11 @@ class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     let pinView = PinView()
     
-    var isPinValid: ((_ pin:String)->Bool)! {
+    public var isPinValid: ((_ pin:String)->Bool)! {
         didSet { pinValidProxy() }
     }
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         view.backgroundColor = UIColor.gray
         createMainStackView()
         addSpacing(60)
