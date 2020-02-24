@@ -7,13 +7,23 @@ extension UIView {
         self.width(constant:widthConstraint).height(constant:heightConstraint)
     }
     
-    @discardableResult public func height(constant: CGFloat) -> Self {
+    @discardableResult
+    public func height(constant: CGFloat) -> Self {
         setConstraint(value: constant, attribute: .height)
         return self
     }
   
-    @discardableResult public func width(constant: CGFloat) -> Self {
+    @discardableResult
+    public func width(constant: CGFloat) -> Self {
         setConstraint(value: constant, attribute: .width)
+        return self
+    }
+    
+    @discardableResult
+    public func centerTo(_ other:UIView) -> Self{
+        let horizontalConstraint = centerXAnchor.constraint(equalTo: other.centerXAnchor)
+        let verticalConstraint = centerYAnchor.constraint(equalTo: other.centerYAnchor)
+        NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint])
         return self
     }
   
@@ -42,7 +52,8 @@ extension UIView {
         return self
     }
     
-    @discardableResult func centerToSuperview() -> UIView {
+    @discardableResult
+    public func centerToSuperview() -> UIView {
         guard let superview = self.superview else {
             print("Error! `superview` was nil – call `addSubview(view: UIView)` before calling `centerToSuperview()` to fix this.")
             return self
