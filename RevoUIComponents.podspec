@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "RevoUIComponents"
-  spec.version      = "0.0.7"
+  spec.version      = "0.0.8"
   spec.summary      = "UI Components used across Revo projects."
 
   # This description is used to generate tags and improve search results.
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/revosystems/revouicomponents.git", :tag => "0.0.7" }
+  spec.source       = { :git => "https://github.com/revosystems/revouicomponents.git", :tag => "0.0.8" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -134,6 +134,6 @@ Pod::Spec.new do |spec|
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-   spec.dependency "RevoFoundation", "~> 0.0.8"
+   spec.dependency "RevoFoundation", "~> 0.0.29"
 
 end

@@ -1,4 +1,5 @@
 import XCTest
+import RevoFoundation
 
 class ImageViewDownloadTest: XCTestCase {
 
@@ -20,11 +21,12 @@ class ImageViewDownloadTest: XCTestCase {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         
         XCTAssertNil(imageView.image)
-        imageView.downloaded(from: URL(string: testImageUrl)!) { data in
-            expectation.fulfill()
-            XCTAssertNotNil(imageView.image)
+        
+        imageView.downloaded(from: testImageUrl) {
             XCTAssertNotNil(imageView.loadFromCache(link: self.testImageUrl))
+            expectation.fulfill()
         }
+        
         wait(for: [expectation], timeout: 5)
     }
 }

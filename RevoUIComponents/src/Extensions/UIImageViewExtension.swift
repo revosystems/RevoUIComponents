@@ -18,31 +18,39 @@ extension UIImageView {
         }.resume()
     }
     
-    public func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {
+    public func downloaded(from link: String, shouldCache:Bool = true, contentMode mode: UIView.ContentMode = .scaleAspectFit, then:(()->Void)?) {
         
-        if let cached = loadFromCache(link: link) {
-            return self.image = cached
+        if shouldCache, let cached = loadFromCache(link: link) {
+            self.image = cached
+            then?()
+            return
         }
         
         guard let url = URL(string: link) else { return }
         downloaded(from: url, contentMode: mode) { [weak self] in
-            self?.saveToCache(link: link, imageData: $0)
+            if shouldCache {
+                self?.saveToCache(link: link, imageData: $0)
+            }
+            then?()
         }
     }
     
 
     public func loadFromCache(link: String) -> UIImage? {
-        let imagePath = link /*link.sha256 + ".png"*/
+        let imagePath = link.sha256 + ".png"
         let paths     = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let filePath  = (paths.first! as NSString).appendingPathComponent(imagePath)
         return UIImage(contentsOfFile: filePath)
     }
     
     public func saveToCache(link:String, imageData:Data){
-        let paths     = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let filePath  = (paths.first! as NSString).appendingPathComponent(link)
-        guard let url = URL(string: filePath) else { return }
-        try? UIImage(data: imageData)?.pngData()?.write(to: url)
+        let imagePath = link.sha256 + ".png"
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else { return }
+        do {
+            try UIImage(data: imageData)?.pngData()?.write(to: directory.appendingPathComponent(imagePath)!)
+        }catch{
+            print(error)
+        }
     }
 
 }
