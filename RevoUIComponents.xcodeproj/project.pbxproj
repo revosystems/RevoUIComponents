@@ -24,6 +24,7 @@
 		8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D982358D6AC009CF3D2 /* PinViewController.swift */; };
 		8DCE0CC4235C6E220044EBA8 /* UIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */; };
 		8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE0CC6235F399D0044EBA8 /* Toast.swift */; };
+		BB4091272418EEB000208C9C /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4091262418EEB000208C9C /* AlertController.swift */; };
 		BB7EFD3624126DE700439821 /* ImageViewDownloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD3524126DE700439821 /* ImageViewDownloadTest.swift */; };
 		C6B5A1A21A70A314B0152946 /* Pods_RevoUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */; };
 /* End PBXBuildFile section */
@@ -62,6 +63,7 @@
 		8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewConstraints.swift; sourceTree = "<group>"; };
 		8DCE0CC6235F399D0044EBA8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
 		9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB4091262418EEB000208C9C /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		BB7EFD3524126DE700439821 /* ImageViewDownloadTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownloadTest.swift; sourceTree = "<group>"; };
 		C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D577B97B44A8C400B4E69387 /* Pods-RevoUIComponentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.debug.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,9 +147,9 @@
 		8D9F0D912358C3A9009CF3D2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BB4091252418EEB000208C9C /* Controllers */,
 				8DCE0CC5235F39930044EBA8 /* Components */,
 				8DCE0CC2235C6E110044EBA8 /* Extensions */,
-				8D9F0D972358D6A0009CF3D2 /* Controllers */,
 				8D9F0D962358D697009CF3D2 /* Views */,
 			);
 			path = src;
@@ -160,13 +162,6 @@
 				8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		8D9F0D972358D6A0009CF3D2 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		8DCE0CC2235C6E110044EBA8 /* Extensions */ = {
@@ -207,6 +202,14 @@
 				C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BB4091252418EEB000208C9C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB4091262418EEB000208C9C /* AlertController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB4091272418EEB000208C9C /* AlertController.swift in Sources */,
 				8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */,
 				8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */,
 				8D3B0C9523A00865003C1847 /* UIImageViewExtension.swift in Sources */,
