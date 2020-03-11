@@ -30,10 +30,9 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     }
     
     @IBAction func onAlertPressed(_ sender: Any) {
-        let a = Alert(alert: "hola", "que tal", okText: "Ok", cancelText: "No") { result in
+        Alert(alert: "hola", "que tal", okText: "Ok", cancelText: "No") { result in
             print(result)
-        }
-        present(a, animated: true)
+        }.show(self)
     }
     
     @IBAction func onShowPinPressed(_ sender: Any) {
