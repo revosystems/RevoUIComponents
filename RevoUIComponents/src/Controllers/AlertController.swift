@@ -9,7 +9,7 @@ public enum AlertResult: Int {
 public class Alert : UIAlertController {
     var then:((_ result:Int)->Void)?
     
-    public convenience init(alert:String, _ message:String = "", okText:String? = nil, cancelText:String? = nil, destroyText:String? = nil){
+    public convenience init(alert:String, message:String = "", okText:String? = nil, cancelText:String? = nil, destroyText:String? = nil){
                 
         self.init(title: alert, message: message, preferredStyle: .alert)
         
@@ -26,7 +26,7 @@ public class Alert : UIAlertController {
         }
     }
     
-    public convenience init(action:String, _ message:String = "", actions:[String], cancelText:String? = nil, destroyText:String? = nil){
+    public convenience init(action:String, message:String = "", actions:[String], cancelText:String? = nil, destroyText:String? = nil){
         
         self.init(title: action, message: message, preferredStyle: .actionSheet)
                 
@@ -42,12 +42,17 @@ public class Alert : UIAlertController {
             addAction(UIAlertAction(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy.rawValue) })
         }
     }
-    
-    public func show(_ parentVc:UIViewController, animated:Bool = true, then:@escaping(_ result:Int)->Void) {
+
+    public func show(_ parentVc:UIViewController, sender:UIView? = nil, animated:Bool = true, then:@escaping(_ result:Int)->Void) {
         if let fakeResult = getNextFakeResult(){
             return then(fakeResult)
         }
         self.then = then
+        if preferredStyle == .actionSheet, let sender = sender {
+            popoverPresentationController?.sourceRect = sender.bounds
+            popoverPresentationController?.sourceView = sender
+            popoverPresentationController?.permittedArrowDirections = .any
+        }
         parentVc.present(self, animated: animated)
     }
     
