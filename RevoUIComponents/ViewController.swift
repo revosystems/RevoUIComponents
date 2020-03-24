@@ -6,6 +6,7 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     @IBOutlet weak var asyncButton: AsyncButton!
     @IBOutlet weak var stateTableView: ContentStatusTableView!
     @IBOutlet weak var stateView: ContentStatusView!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,6 +14,7 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
 
     @IBAction func onAsyncButtonPressed(_ sender: Any) {
         asyncButton.animateProgress()
+        loadImage()
                 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [unowned self] in
             self.asyncButton.animateFailed()
@@ -25,12 +27,21 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         stateView.state      = .loading(text: "Loading2...")
     }
     
+    func loadImage(){
+        if Int.random(in: 0...2) == 2 {
+            imageView.downloaded(from: "https://revo.works/images/logo.png", shouldCache:false)
+        } else {
+            imageView.downloaded(from: "https://image.shutterstock.com/image-photo/beautiful-water-drop-on-dandelion-260nw-789676552.jpg", shouldCache:false)
+            
+        }
+    }
+    
     func onContentStatusAction(_ sender:UIButton){
         onAsyncButtonPressed(sender)
     }
     
     @IBAction func onAlertPressed(_ sender: Any) {
-        Alert(alert: "hola", "que tal", okText: "Ok", cancelText: "No").show(self) { result in
+        Alert(alert: "hola", message: "que tal", okText: "Ok", cancelText: "No").show(self) { result in
             print(result)
         }
     }

@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z41-6E-f5q" customClass="AsyncButton" customModule="RevoUIComponents" customModuleProvider="target">
-                                <rect key="frame" x="39" y="161" width="119" height="30"/>
+                                <rect key="frame" x="27" y="128" width="119" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.91764705879999997" green="0.35686274509999999" blue="0.18039215689999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -62,12 +62,17 @@
                                     <action selector="onAlertPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FNZ-A3-OYE"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B6U-cB-WC5">
+                                <rect key="frame" x="27" y="169" width="119" height="88"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="asyncButton" destination="Z41-6E-f5q" id="77a-cr-pUu"/>
+                        <outlet property="imageView" destination="B6U-cB-WC5" id="LL3-1B-jKg"/>
                         <outlet property="stateTableView" destination="EpH-wP-UmT" id="Geq-jx-FDE"/>
                         <outlet property="stateView" destination="jGB-Wk-Vd3" id="QFk-Q9-AXI"/>
                     </connections>
