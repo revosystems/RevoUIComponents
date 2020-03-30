@@ -12,12 +12,12 @@ public class LoadingAnimation : UIView {
     var tint        = UIColor.black
     var size        = CGSize(width: 40.0, height: 40.0)
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
     }
