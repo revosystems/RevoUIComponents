@@ -31,10 +31,9 @@ public class LoadingAnimation : UIView {
     }
     
     func setup(){
-        backgroundColor = UIColor.red
         isUserInteractionEnabled = false
-        isHidden = true
-        animationLayer = CALayer()
+        isHidden                 = true
+        animationLayer           = CALayer()
         
         layer.addSublayer(animationLayer)
         setContentHuggingPriority(.required, for: .horizontal)
