@@ -24,6 +24,7 @@
 		8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9F0D982358D6AC009CF3D2 /* PinViewController.swift */; };
 		8DCE0CC4235C6E220044EBA8 /* UIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */; };
 		8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCE0CC6235F399D0044EBA8 /* Toast.swift */; };
+		8DF341252432084000654033 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF341242432084000654033 /* LoadingAnimation.swift */; };
 		BB4091272418EEB000208C9C /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4091262418EEB000208C9C /* AlertController.swift */; };
 		BB40912B24194EAE00208C9C /* AlertTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40912A24194EAE00208C9C /* AlertTest.swift */; };
 		BB7EFD3624126DE700439821 /* ImageViewDownloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD3524126DE700439821 /* ImageViewDownloadTest.swift */; };
@@ -63,6 +64,7 @@
 		8D9F0D982358D6AC009CF3D2 /* PinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinViewController.swift; sourceTree = "<group>"; };
 		8DCE0CC3235C6E220044EBA8 /* UIViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewConstraints.swift; sourceTree = "<group>"; };
 		8DCE0CC6235F399D0044EBA8 /* Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toast.swift; sourceTree = "<group>"; };
+		8DF341242432084000654033 /* LoadingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAnimation.swift; sourceTree = "<group>"; };
 		9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4091262418EEB000208C9C /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		BB40912A24194EAE00208C9C /* AlertTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTest.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 				8DCE0CC6235F399D0044EBA8 /* Toast.swift */,
 				76C07EE92366341800D59DF6 /* ContentStatus.swift */,
 				76C07EE62360D81900D59DF6 /* Pin */,
+				8DF341242432084000654033 /* LoadingAnimation.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
 				76C07EEA2366341800D59DF6 /* ContentStatus.swift in Sources */,
 				76C07EE82360D82B00D59DF6 /* PinView.swift in Sources */,
+				8DF341252432084000654033 /* LoadingAnimation.swift in Sources */,
 				8D9F0D932358C3BA009CF3D2 /* AsyncButton.swift in Sources */,
 				76C07EEE23683CBA00D59DF6 /* UIColorExtension.swift in Sources */,
 				8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */,

@@ -7,11 +7,13 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     @IBOutlet weak var stateTableView: ContentStatusTableView!
     @IBOutlet weak var stateView: ContentStatusView!
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var loading: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupLoading()
     }
-
+        
     @IBAction func onAsyncButtonPressed(_ sender: Any) {
         asyncButton.animateProgress()
         loadImage()
@@ -50,6 +52,12 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         let pin = PinViewController()
         pin.isPinValid = { $0 == "0000" }
         self.present(pin, animated: true, completion: nil)
+    }
+    
+    func setupLoading(){
+        let animation = LoadingAnimation(frame: loading.bounds)
+        loading.addSubview(animation.set(color:UIColor.white))
+        animation.startAnimating()
     }
 }
 

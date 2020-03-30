@@ -66,6 +66,11 @@
                                 <rect key="frame" x="27" y="169" width="119" height="88"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fhq-iw-hmZ">
+                                <rect key="frame" x="139" y="73" width="86" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -73,6 +78,7 @@
                     <connections>
                         <outlet property="asyncButton" destination="Z41-6E-f5q" id="77a-cr-pUu"/>
                         <outlet property="imageView" destination="B6U-cB-WC5" id="LL3-1B-jKg"/>
+                        <outlet property="loading" destination="Fhq-iw-hmZ" id="xAb-uD-9v4"/>
                         <outlet property="stateTableView" destination="EpH-wP-UmT" id="Geq-jx-FDE"/>
                         <outlet property="stateView" destination="jGB-Wk-Vd3" id="QFk-Q9-AXI"/>
                     </connections>
