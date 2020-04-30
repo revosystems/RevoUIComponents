@@ -1,6 +1,6 @@
 import UIKit
 
-@objc class Toast : NSObject{
+@objc public class Toast : NSObject{
     static var shared:Toast = Toast()
 
     let notificationView = UIView()
