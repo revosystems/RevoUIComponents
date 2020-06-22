@@ -46,7 +46,7 @@ public class AsyncButton : UIButton {
         if (showWarningIconWhenFailed) {
             addCompletionImage("exclamationmark.triangle", UIColor.red)
             resetAfterDelay()
-        }else {
+        } else {
             reset()
         }
     }
@@ -56,9 +56,22 @@ public class AsyncButton : UIButton {
     func setup(){
         originalTitle = title(for: .normal)
         originalImage = image(for: .normal)
-        progress      = CircularProgress(frame: bounds)
+        
+        progress      = CircularProgress(frame: progressFrame )
         progress.tintColor = self.tintColor
+
         addSubview(progress)
+        progress.centerTo(self)
+    }
+    
+    override public func layoutSubviews() {
+        super.layoutSubviews()
+        progress.frame = progressFrame
+    }
+    
+    var progressFrame : CGRect {
+        let size      = min(30, bounds.size.height)
+        return CGRect(x: bounds.size.width/2 - size/2, y: bounds.size.height/2 - size/2, width: size, height: size)
     }
     
     func resetAfterDelay(){
