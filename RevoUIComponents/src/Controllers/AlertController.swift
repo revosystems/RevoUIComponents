@@ -9,13 +9,11 @@ public enum AlertResult: Int {
 public class Alert : UIAlertController {
     var then:((_ result:Int)->Void)?
     
-    public convenience init(alert:String, message:String = "", okText:String? = nil, cancelText:String? = nil, destroyText:String? = nil){
+    public convenience init(alert:String, message:String = "", okText:String = "Ok", cancelText:String? = nil, destroyText:String? = nil){
                 
         self.init(title: alert, message: message, preferredStyle: .alert)
         
-        if okText != nil {
-            addAction(UIAlertAction(title: okText,      style: .default) { action in self.then?(AlertResult.ok.rawValue) })
-        }
+        addAction(UIAlertAction(title: okText,      style: .default) { action in self.then?(AlertResult.ok.rawValue) })
         
         if cancelText != nil {
             addAction(UIAlertAction(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel.rawValue) })
