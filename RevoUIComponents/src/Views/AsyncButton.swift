@@ -51,8 +51,12 @@ public class AsyncButton : UIButton {
         }
     }
     
-    // MARK: Private methods
+    override public func setTitle(_ title: String?, for state: UIControl.State) {
+        super.setTitle(title, for: state)
+        originalTitle = title
+    }
     
+    // MARK: Private methods
     func setup(){
         originalTitle = title(for: .normal)
         originalImage = image(for: .normal)
