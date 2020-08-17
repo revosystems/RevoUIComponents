@@ -28,6 +28,7 @@ public class AsyncButton : UIButton {
     
     public func animateProgress(){
         isEnabled = false
+        originalTitle = title(for: .normal)
         removeCompletionImage()
         setTitle("",  for: .normal)
         setImage(nil, for: .normal)
@@ -53,7 +54,6 @@ public class AsyncButton : UIButton {
     
     override public func setTitle(_ title: String?, for state: UIControl.State) {
         super.setTitle(title, for: state)
-        originalTitle = title
     }
     
     // MARK: Private methods
