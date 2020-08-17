@@ -7,7 +7,6 @@ public class AsyncButton : UIButton {
      * Set this to false if you want to show the original button at the moment failed is called
      */
     var showWarningIconWhenFailed = true
-    var shouldOverrideTitle = true
     
     var progress:CircularProgress!
     private var originalTitle:String?
@@ -29,13 +28,12 @@ public class AsyncButton : UIButton {
     
     public func animateProgress(){
         isEnabled = false
+        originalTitle = title(for: .normal)
         removeCompletionImage()
-        shouldOverrideTitle = false
         setTitle("",  for: .normal)
         setImage(nil, for: .normal)
         setTitle("",  for: .disabled)
         setImage(nil, for: .disabled)
-        shouldOverrideTitle = true
         progress.start()
     }
     
@@ -56,9 +54,6 @@ public class AsyncButton : UIButton {
     
     override public func setTitle(_ title: String?, for state: UIControl.State) {
         super.setTitle(title, for: state)
-        if shouldOverrideTitle {
-            originalTitle = title
-        }
     }
     
     // MARK: Private methods
