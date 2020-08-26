@@ -5,16 +5,16 @@ extension UIImageView {
     
     public func downloaded(from link: String, shouldCache:Bool = true, contentMode mode: UIView.ContentMode = .scaleAspectFit, then:(()->Void)? = nil) {
         
-        if shouldCache, let cached = loadFromCache(link: link) {
+        if shouldCache, let cached = Self.loadFromCache(link: link) {
             self.image = cached
             then?()
             return
         }
         
         guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode) { [weak self] in
+        downloaded(from: url, contentMode: mode) { 
             if shouldCache {
-                self?.saveToCache(link: link, imageData: $0)
+                Self.saveToCache(link: link, imageData: $0)
             }
             then?()
         }
@@ -42,14 +42,14 @@ extension UIImageView {
     
     
     //MARK:- Cache
-    public func loadFromCache(link: String) -> UIImage? {
+    static public func loadFromCache(link: String) -> UIImage? {
         let imagePath = link.sha256 + ".png"
         let paths     = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
         let filePath  = (paths.first! as NSString).appendingPathComponent(imagePath)
         return UIImage(contentsOfFile: filePath)
     }
     
-    public func saveToCache(link:String, imageData:Data){
+    static public func saveToCache(link:String, imageData:Data){
         let imagePath = link.sha256 + ".png"
         guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else { return }
         do {
@@ -57,6 +57,16 @@ extension UIImageView {
         }catch{
             print(error)
         }
+    }
+    
+    static public func deleteFromCache(link:String){
+        let imagePath = link.sha256 + ".png"
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else { return }
+           do {
+            try FileManager.default.removeItem(at: directory.appendingPathComponent(imagePath)!)
+           }catch{
+               print(error)
+           }
     }
     
     //MARK:- UI Helpers
