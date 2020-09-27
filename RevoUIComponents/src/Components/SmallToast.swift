@@ -22,7 +22,7 @@ import UIKit
         notificationView.addSubview(textView)
     }
 
-    @objc public class func show(_ text:String, bgColor:UIColor = UIColor.white, height:CGFloat = 30, width:CGFloat = 150, duration:Double = 2, font:UIFont? = .systemFont(ofSize: 12)){
+    @objc public class func show(_ text:String, bgColor:UIColor = UIColor.white, height:CGFloat = 30, width:CGFloat = 150, duration:Double = 2, font:UIFont? = .systemFont(ofSize: 12), textColor:UIColor = .black){
         guard let activeWindow = Self.shared.activeWindow else { return }
         Self.shared.height          = height
         Self.shared.width           = width
@@ -32,6 +32,7 @@ import UIKit
         }
         notification.backgroundColor = bgColor
         Self.animateIn(notification)
+        Self.shared.textView.textColor = textColor
         Self.shared.setText(text, font:font)
         if (duration == 0) { return }
         DispatchQueue.main.asyncAfter(deadline: .now() + duration) { Self.dismiss() }
