@@ -29,6 +29,10 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         stateView.state      = .loading(text: "Loading2...")
     }
     
+    @IBAction func onShowToast(_ sender: Any) {
+        SmallToast.show("Order 67 Paid!", bgColor: .black)
+    }
+    
     func loadImage(){
         if Int.random(in: 0...2) == 2 {
             imageView.downloaded(from: "https://revo.works/images/logo.png", shouldCache:false)
