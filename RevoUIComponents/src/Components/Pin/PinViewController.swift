@@ -6,8 +6,9 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     var canCancel = false
     
     private var stack:UIStackView!
+    private var innerStackView:UIStackView!
     
-    let pinView = PinView()
+    public let pinView = PinView()
     
     public var isPinValid: ((_ pin:String)->Bool)! {
         didSet { pinValidProxy() }
@@ -16,12 +17,14 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     override public func viewDidLoad() {
         view.backgroundColor = UIColor.gray
         createMainStackView()
-        addSpacing(60)
+        addSpacing(200)
+        //stack.addArrangedSubview(UIView())
+        stack.addArrangedSubview(innerStackView)
         addTitle()
-        addSpacing(10)
         addPinView()
-        addSpacing(40)
         addActionButtons()
+        stack.addArrangedSubview(UIView())
+        //addSpacing(200)
     }
     
     private func addSpacing(_ size:CGFloat){
@@ -32,26 +35,32 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         stack              = UIStackView(frame: view.bounds)
         stack.axis         = .vertical
         stack.alignment    = .center
-        stack.distribution = .fillProportionally
+        //stack.distribution = .fillProportionally
         view.addSubview(stack)
-        stack.equalSizeAs(view)        
+        stack.equalSizeAs(view)
+        
+        innerStackView              = UIStackView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        //innerStackView.height(constant: 400)
+        innerStackView.axis         = .vertical
+        innerStackView.alignment    = .center
+        //innerStackView.distribution = .fill
     }
     
     private func addTitle(){
         let titleLabel     = UILabel().height(constant: 40)
-        titleLabel.text    = self.title ?? "PIN"
+        titleLabel.text    = title ?? "PIN"
         titleLabel.textColor = UIColor.white
         titleLabel.textAlignment = .center
-        stack.addArrangedSubview(titleLabel)
+        innerStackView.addArrangedSubview(titleLabel)
     }
     
     private func addPinView(){
         pinView.appearanceDelegate = self
-        stack.addArrangedSubview(pinView)
+        innerStackView.addArrangedSubview(pinView)
         pinView.setup()
     }
     
-    func pinView(configureButton:UIButton, size:CGFloat) {
+    public func pinView(configureButton:UIButton, size:CGFloat) {
         configureButton.layer.borderWidth   = 1  //TODO: Use .border() when RevoFoundation updated
         configureButton.layer.borderColor   = UIColor.white.cgColor
         configureButton.round(size/2) //TODO: Change for .circle() when RevoFoundation updated
@@ -61,7 +70,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     
     private func addActionButtons(){
-        let row         = UIStackView().height(constant: 100)
+        let row         = UIStackView().height(constant: 0)
         row.axis        = .horizontal
         row.spacing     = 200
 
@@ -80,7 +89,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         row.addArrangedSubview(deleteButton)
     
 
-        stack.addArrangedSubview(row)
+        innerStackView.addArrangedSubview(row)
     }
     
     @objc private func onCancelPressed(_ sender:UIButton){
@@ -93,14 +102,11 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     private func pinValidProxy(){
         pinView.isPinValid = { [unowned self] in
-            return tap(self.isPinValid($0)) {
-                if ($0) { self.dismiss(animated: true) }
+            tap(isPinValid($0)) {
+                if ($0) { dismiss(animated: true) }
             }
         }
     }
-    
-    
-    
 }
 
 

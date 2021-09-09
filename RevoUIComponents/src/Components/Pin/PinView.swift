@@ -1,16 +1,15 @@
 import UIKit
 
-protocol PinViewAppearanceDelegate {
+public protocol PinViewAppearanceDelegate {
     func pinView(configureButton:UIButton, size:CGFloat)
     func pinView(shouldBlink:UIButton) -> Bool
 }
 
-extension PinViewAppearanceDelegate {
+public extension PinViewAppearanceDelegate {
     func pinView(shouldBlink:UIButton) -> Bool { true }
 }
 
-class PinView : UIView {
-    
+public class PinView : UIView {
     var length:Int = 4
     let dotSize:CGFloat     = 12.0
     let buttonSize:CGFloat  = 80
@@ -39,7 +38,7 @@ class PinView : UIView {
     func setup(){
         createMainStack()
         addDots()
-        stack.addArrangedSubview(UIView().height(constant: 80))
+        stack.addArrangedSubview(UIView().height(constant: 40))
         addButtons()
     }
     
@@ -71,18 +70,18 @@ class PinView : UIView {
     
     private func updateDots(){
         UIView.animate(withDuration: 0.2) { [unowned self] in
-            self.dotsStackView.subviews.eachWithIndex { (dot, index) in
-                dot.backgroundColor = index < self.enteredPin.count ? .white : .clear
+            dotsStackView.subviews.eachWithIndex { (dot, index) in
+                dot.backgroundColor = index < enteredPin.count ? .white : .clear
             }
         }
     }
     
     private func addButtons(){
-        
         let buttonsVerticalStack            = UIStackView()
         buttonsVerticalStack.axis           = .vertical
         buttonsVerticalStack.alignment      = .center
         buttonsVerticalStack.distribution   = .fillEqually
+        buttonsVerticalStack.spacing        = 15
         
         Array(0..<4).each { count in
             let row         = UIStackView()
@@ -90,11 +89,11 @@ class PinView : UIView {
             row.alignment   = .center
             row.distribution = .fillEqually
             row.spacing     = 30
-            if(count < 3){
+            if (count < 3) {
                 Array(0..<3).each { count2 in
                     row.addArrangedSubview(createNumberButton(count * 3 + count2 + 1))
                 }
-            }else{
+            } else {
                 row.addArrangedSubview(createNumberButton(0))
             }
             buttonsVerticalStack.addArrangedSubview(row)
@@ -123,7 +122,7 @@ class PinView : UIView {
             return onWrongPin()
         }
         if (isPinValid(enteredPin)){
-            onRightPin()
+            return onRightPin()
         }
         onWrongPin()
     }
