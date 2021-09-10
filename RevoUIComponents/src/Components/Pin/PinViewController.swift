@@ -10,6 +10,8 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     public let pinView = PinView()
     
+    let pinHeight = 400
+    
     public var isPinValid: ((_ pin:String)->Bool)! {
         didSet { pinValidProxy() }
     }
@@ -24,11 +26,11 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         view.tintColor = tint
         
         createMainStackView()
-        addSpacing(isIpad() ? 250 : 100)
-        //stack.addArrangedSubview(UIView())
+        addSpacing((UIScreen.main.bounds.height - CGFloat(pinHeight + 50)) / 2 )
         stack.addArrangedSubview(innerStackView)
         addTitle()
         addPinView()
+        //addSpacing(100)
         addActionButtons()
         stack.addArrangedSubview(UIView())
         //addSpacing(200)
@@ -47,7 +49,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         view.addSubview(stack)
         stack.equalSizeAs(view)
         
-        innerStackView              = UIStackView(frame: CGRect(x: 0, y: 0, width: 300, height: 400))
+        innerStackView              = UIStackView(frame: CGRect(x: 0, y: 0, width: 300, height: pinHeight))
         //innerStackView.height(constant: 400)
         innerStackView.axis         = .vertical
         innerStackView.alignment    = .center
@@ -78,7 +80,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     
     private func addActionButtons(){
-        let row         = UIStackView().height(constant: 0)
+        let row         = UIStackView()
         row.axis        = .horizontal
         row.spacing     = 200
 
@@ -87,6 +89,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         cancelButton.setTitleColor(view.tintColor, for:.normal)
         if (canCancel) {
             cancelButton.addTarget(self, action: #selector(onCancelPressed), for: .touchUpInside)
+            cancelButton.setTitleColor(.lightGray, for:.highlighted)
         }
         row.addArrangedSubview(cancelButton)
 
@@ -94,6 +97,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         deleteButton.setTitle("Delete", for: .normal)
         deleteButton.addTarget(self, action: #selector(onDeletePressed), for: .touchUpInside)
         deleteButton.setTitleColor(view.tintColor, for:.normal)
+        deleteButton.setTitleColor(.lightGray, for:.highlighted)
         row.addArrangedSubview(deleteButton)
     
 

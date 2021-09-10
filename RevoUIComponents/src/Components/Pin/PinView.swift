@@ -71,7 +71,7 @@ public class PinView : UIView {
     private func updateDots(){
         UIView.animate(withDuration: 0.2) { [unowned self] in
             dotsStackView.subviews.eachWithIndex { (dot, index) in
-                dot.backgroundColor = index < enteredPin.count ? .white : .clear
+                dot.backgroundColor = index < enteredPin.count ? tintColor : .clear
             }
         }
     }
