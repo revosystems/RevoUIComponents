@@ -53,9 +53,10 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     }
     
     @IBAction func onShowPinPressed(_ sender: Any) {
-        let pin = PinViewController()
+        let pin = PinViewController().setup(.gray, tint: .white)
+        pin.modalPresentationStyle = .fullScreen
         pin.isPinValid = { $0 == "0000" }
-        self.present(pin, animated: true, completion: nil)
+        present(pin, animated: true, completion: nil)
     }
     
     func setupLoading(){

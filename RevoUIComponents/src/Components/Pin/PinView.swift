@@ -62,7 +62,7 @@ public class PinView : UIView {
             dot.round(dotSize/2)    //TODO: Change for .circle() when RevoFoundation updated
             dot.backgroundColor     = UIColor.clear //TODO: Use .border() when RevoFoundation updated
             dot.layer.borderWidth   = 1
-            dot.layer.borderColor   = UIColor.white.cgColor
+            dot.layer.borderColor   = tintColor.cgColor
             dotsStackView.addArrangedSubview(dot)
         }
         stack.addArrangedSubview(dotsStackView)
@@ -129,7 +129,7 @@ public class PinView : UIView {
     
     private func animateButton(_ sender:UIButton){
         let colorAnimation          = CABasicAnimation(keyPath: "backgroundColor")
-        colorAnimation.fromValue    = UIColor.white.cgColor
+        colorAnimation.fromValue    = tintColor.cgColor
         colorAnimation.duration     = 0.3  // animation duration
         sender.layer.add(colorAnimation, forKey: "ColorPulse")
     }

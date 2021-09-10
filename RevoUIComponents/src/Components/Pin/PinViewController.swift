@@ -15,9 +15,16 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     }
     
     override public func viewDidLoad() {
-        view.backgroundColor = UIColor.gray
+        
+    }
+    
+    @discardableResult
+    func setup(_ bg:UIColor = .gray, tint:UIColor = .white) -> Self {
+        view.backgroundColor = bg
+        view.tintColor = tint
+        
         createMainStackView()
-        addSpacing(200)
+        addSpacing(isIpad() ? 250 : 100)
         //stack.addArrangedSubview(UIView())
         stack.addArrangedSubview(innerStackView)
         addTitle()
@@ -25,6 +32,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         addActionButtons()
         stack.addArrangedSubview(UIView())
         //addSpacing(200)
+        return self
     }
     
     private func addSpacing(_ size:CGFloat){
@@ -49,7 +57,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     private func addTitle(){
         let titleLabel     = UILabel().height(constant: 40)
         titleLabel.text    = title ?? "PIN"
-        titleLabel.textColor = UIColor.white
+        titleLabel.textColor = view.tintColor
         titleLabel.textAlignment = .center
         innerStackView.addArrangedSubview(titleLabel)
     }
@@ -62,10 +70,10 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     
     public func pinView(configureButton:UIButton, size:CGFloat) {
         configureButton.layer.borderWidth   = 1  //TODO: Use .border() when RevoFoundation updated
-        configureButton.layer.borderColor   = UIColor.white.cgColor
+        configureButton.layer.borderColor   = view.tintColor.cgColor
         configureButton.round(size/2) //TODO: Change for .circle() when RevoFoundation updated
         configureButton.titleLabel?.font = .systemFont(ofSize: 25)
-        configureButton.setTitleColor(.white, for: .normal)
+        configureButton.setTitleColor(view.tintColor, for: .normal)
     }
     
     
@@ -76,7 +84,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
 
         let cancelButton = UIButton()
         cancelButton.setTitle(canCancel ? "Cancel" : "", for: .normal)
-        cancelButton.setTitleColor(.lightGray, for:.highlighted)
+        cancelButton.setTitleColor(view.tintColor, for:.normal)
         if (canCancel) {
             cancelButton.addTarget(self, action: #selector(onCancelPressed), for: .touchUpInside)
         }
@@ -85,7 +93,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         let deleteButton = UIButton()
         deleteButton.setTitle("Delete", for: .normal)
         deleteButton.addTarget(self, action: #selector(onDeletePressed), for: .touchUpInside)
-        deleteButton.setTitleColor(.lightGray, for:.highlighted)
+        deleteButton.setTitleColor(view.tintColor, for:.normal)
         row.addArrangedSubview(deleteButton)
     
 
