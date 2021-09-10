@@ -19,7 +19,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     }
     
     @discardableResult
-    func setup(_ bg:UIColor = .gray, tint:UIColor = .white) -> Self {
+    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white) -> Self {
         view.backgroundColor = bg
         view.tintColor = tint
         
