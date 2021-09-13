@@ -26,7 +26,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         view.tintColor = tint
         
         createMainStackView()
-        addSpacing((UIScreen.main.bounds.height - CGFloat(pinHeight + 50)) / 2 )
+        addSpacing((UIScreen.main.bounds.height - CGFloat(pinHeight + 120)) / 2 )
         stack.addArrangedSubview(innerStackView)
         addTitle()
         addPinView()
