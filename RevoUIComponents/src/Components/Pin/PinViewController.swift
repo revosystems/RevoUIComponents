@@ -29,6 +29,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         addSpacing((UIScreen.main.bounds.height - CGFloat(pinHeight + 120)) / 2 )
         stack.addArrangedSubview(innerStackView)
         addTitle()
+        
         addPinView()
         //addSpacing(100)
         addActionButtons()
@@ -45,15 +46,12 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         stack              = UIStackView(frame: view.bounds)
         stack.axis         = .vertical
         stack.alignment    = .center
-        //stack.distribution = .fillProportionally
         view.addSubview(stack)
         stack.equalSizeAs(view)
         
         innerStackView              = UIStackView(frame: CGRect(x: 0, y: 0, width: 300, height: pinHeight))
-        //innerStackView.height(constant: 400)
         innerStackView.axis         = .vertical
         innerStackView.alignment    = .center
-        //innerStackView.distribution = .fill
     }
     
     private func addTitle(){
@@ -61,6 +59,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         titleLabel.text    = title ?? "PIN"
         titleLabel.textColor = view.tintColor
         titleLabel.textAlignment = .center
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
         innerStackView.addArrangedSubview(titleLabel)
     }
     

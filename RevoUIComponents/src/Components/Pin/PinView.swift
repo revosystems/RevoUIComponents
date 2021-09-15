@@ -12,7 +12,7 @@ public extension PinViewAppearanceDelegate {
 public class PinView : UIView {
     var length:Int = 4
     let dotSize:CGFloat     = 12.0
-    let buttonSize:CGFloat  = 80
+    let buttonSize:CGFloat  = 85
     
     var isPinValid: ((_ pin:String)->Bool)!
     
@@ -107,6 +107,7 @@ public class PinView : UIView {
         button.tag = number
         button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
         appearanceDelegate?.pinView(configureButton: button, size:buttonSize)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 35)
         return button
     }
     
