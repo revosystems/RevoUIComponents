@@ -8,9 +8,9 @@ import RevoFoundation
 public enum ContentStatus{
     
     case loading(text:String = "Loading")
-    case empty(image:String?, title:String?, description:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?)
+    case empty(image:String? = nil, title:String? = nil, description:String? = nil, actionTitle:String? = nil, delegate:ContentStatusActionDelegate? = nil)
     case content
-    case error(image:String?, title:String?, description:String?, actionTitle:String?, delegate:ContentStatusActionDelegate?)
+    case error(image:String? = nil, title:String? = nil, description:String? = nil, actionTitle:String? = nil, delegate:ContentStatusActionDelegate? = nil)
             
     var statusView : UIView? {
         switch self{
