@@ -5,7 +5,7 @@ import CryptoKit
 
 extension UIImageView {
  
-    func gravatar(email: String, size:Int? = nil, defaultImage:String? = nil){
+    public func gravatar(email: String?, size:Int? = nil, defaultImage:String? = nil){
         
         var params:[String] = []
         
@@ -17,7 +17,7 @@ extension UIImageView {
             params.append("d=\(defaultImage)")
         }
                 
-        let hash = email.trim().lowercased().md5()
+        let hash = email?.trim().lowercased().md5() ?? "empty-email"
         let url = "https://www.gravatar.com/avatar/\(hash)?\(params.implode("&"))"
         
         downloaded(from: url)

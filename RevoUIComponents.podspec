@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "RevoUIComponents"
-  spec.version      = "0.0.31"
+  spec.version      = "0.0.32"
   spec.summary      = "UI Components used across Revo projects."
 
   # This description is used to generate tags and improve search results.
@@ -81,7 +81,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/revosystems/revouicomponents.git", :tag => "0.0.31" }
+  spec.source       = { :git => "https://github.com/revosystems/revouicomponents.git", :tag => "0.0.32" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
