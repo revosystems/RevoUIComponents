@@ -8,10 +8,12 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     @IBOutlet weak var stateView: ContentStatusView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loading: UIView!
+    @IBOutlet weak var gravatarView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLoading()
+        gravatarView.gravatar(email: "jordi+a@gloobus.net", defaultImage: "https://thesocietypages.org/socimages/files/2009/05/nopic_192.gif")
     }
         
     @IBAction func onAsyncButtonPressed(_ sender: Any) {
