@@ -1,26 +1,27 @@
 import UIKit
 
-public enum AlertResult: Int {
-    case ok      = 0
-    case cancel  = -1
-    case destroy = -2
+public enum AlertResult {
+    case ok
+    case cancel
+    case destroy
+    case action(index:Int)
 }
 
 public class Alert : UIAlertController {
-    var then:((_ result:Int)->Void)?
+    var then:((_ result:AlertResult)->Void)?
     
-    public convenience init(alert:String, message:String = "", okText:String = "Ok", cancelText:String? = nil, destroyText:String? = nil){
+    public convenience init(_ alert:String, message:String = "", okText:String = "Ok", cancelText:String? = nil, destroyText:String? = nil){
                 
         self.init(title: alert, message: message, preferredStyle: .alert)
         
-        addAction(UIAlertAction(title: okText,      style: .default) { action in self.then?(AlertResult.ok.rawValue) })
+        addAction(.init(title: okText, style: .default) { action in self.then?(AlertResult.ok) })
         
         if cancelText != nil {
-            addAction(UIAlertAction(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel.rawValue) })
+            addAction(.init(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel) })
         }
         
         if destroyText != nil {
-            addAction(UIAlertAction(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy.rawValue) })
+            addAction(.init(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy) })
         }
     }
     
@@ -29,19 +30,19 @@ public class Alert : UIAlertController {
         self.init(title: action, message: message, preferredStyle: .actionSheet)
                 
         actions.eachWithIndex { title, index in
-            addAction(UIAlertAction(title: title, style: .default) { action in self.then?(index) })
+            addAction(.init(title: title, style: .default) { action in self.then?(.action(index: index)) })
         }
         
         if cancelText != nil {
-            addAction(UIAlertAction(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel.rawValue) })
+            addAction(.init(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel) })
         }
         
         if destroyText != nil {
-            addAction(UIAlertAction(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy.rawValue) })
+            addAction(.init(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy) })
         }
     }
 
-    public func show(_ parentVc:UIViewController, sender:UIView? = nil, animated:Bool = true, then:@escaping(_ result:Int)->Void) {
+    public func show(_ parentVc:UIViewController, sender:UIView? = nil, animated:Bool = true, then:@escaping(_ result:AlertResult)->Void) {
         if let fakeResult = getNextFakeResult(){
             return then(fakeResult)
         }
@@ -54,24 +55,28 @@ public class Alert : UIAlertController {
         parentVc.present(self, animated: animated)
     }
     
+    public func show(_ parentVc:UIViewController, sender:UIView? = nil, animated:Bool = true) async -> AlertResult {
+        await withCheckedContinuation { continuation in
+            show(parentVc, sender:sender, animated:animated) {
+                continuation.resume(returning: $0)
+            }
+        }
+    }
     
     // ======================================================
-    // MARK: Fake
+    // MARK: - Fake
     // ======================================================
-    static var fakeResults : [Int]?
+    static var fakeResults : [AlertResult]?
     
-    static func enableFake(_ results:[Int]) {
+    static func fake(_ results:[AlertResult]) {
         Self.fakeResults = results
     }
     
     static func disableFake() {
-        Self.fakeResults = []
+        Self.fakeResults = nil
     }
     
-    private func getNextFakeResult() -> Int?{
-        guard let results = Self.fakeResults, results.count > 0 else { return nil }
-        let result = results.first ?? 0
-        Self.fakeResults!.removeFirst()
-        return result
+    private func getNextFakeResult() -> AlertResult?{
+        Self.fakeResults?.pop()
     }
 }

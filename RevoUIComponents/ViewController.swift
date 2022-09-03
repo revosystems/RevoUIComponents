@@ -49,7 +49,7 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     }
     
     @IBAction func onAlertPressed(_ sender: Any) {
-        Alert(alert: "hola", message: "que tal", okText: "Ok", cancelText: "No").show(self) { result in
+        Alert("hola", message: "que tal", okText: "Ok", cancelText:"Cancel", destroyText: "NO").show(self) { result in
             print(result)
         }
     }
