@@ -1,4 +1,5 @@
 import UIKit
+import RevoFoundation
 
 public enum AlertResult {
     case ok
@@ -42,7 +43,7 @@ public class Alert : UIAlertController {
         }
     }
 
-    public func show(_ parentVc:UIViewController, sender:UIView? = nil, animated:Bool = true, then:@escaping(_ result:AlertResult)->Void) {
+    public func show(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, then:@escaping(_ result:AlertResult)->Void) {
         if let fakeResult = getNextFakeResult(){
             return then(fakeResult)
         }
@@ -52,10 +53,10 @@ public class Alert : UIAlertController {
             popoverPresentationController?.sourceView = sender
             popoverPresentationController?.permittedArrowDirections = .any
         }
-        parentVc.present(self, animated: animated)
+        (parentVc ?? topVc())?.present(self, animated: animated)
     }
     
-    public func show(_ parentVc:UIViewController, sender:UIView? = nil, animated:Bool = true) async -> AlertResult {
+    public func show(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true) async -> AlertResult {
         await withCheckedContinuation { continuation in
             show(parentVc, sender:sender, animated:animated) {
                 continuation.resume(returning: $0)
