@@ -26,7 +26,7 @@ public class Alert : UIAlertController {
         }
     }
     
-    public convenience init(action:String, message:String = "", actions:[String], cancelText:String? = nil, destroyText:String? = nil){
+    public convenience init(action:String, message:String = "", actions:[String] = [], cancelText:String? = nil, destroyText:String? = nil){
         
         self.init(title: action, message: message, preferredStyle: .actionSheet)
                 
@@ -41,6 +41,12 @@ public class Alert : UIAlertController {
         if destroyText != nil {
             addAction(.init(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy) })
         }
+    }
+    
+    public func addAction(_ title:String, value:Int){
+        addAction(.init(title: title, style: .default) {
+            action in self.then?(.action(index: value))
+        })
     }
 
     public func show(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, then:@escaping(_ result:AlertResult)->Void) {
