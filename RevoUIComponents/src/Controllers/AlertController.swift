@@ -77,11 +77,12 @@ public class Alert : UIAlertController {
     // ======================================================
     static var fakeResults : [AlertResult]?
     
-    static func fake(_ results:[AlertResult]) {
+    //[WARNING] This cannot be called within the tests, a wraper needs to be addeed in the main target so the static variable is the same
+    public static func fake(_ results:[AlertResult]) {
         Self.fakeResults = results
     }
     
-    static func disableFake() {
+    public static func disableFake() {
         Self.fakeResults = nil
     }
     
