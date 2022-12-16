@@ -33,7 +33,7 @@ open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
     /**
     The UIImage representation of the signature. Read/write.
     */
-    open var signature: UIImage? {
+    @objc open var signature: UIImage? {
         get {
             canvas.drawing.image(from: bounds, scale: 1.0)
         }
@@ -46,7 +46,7 @@ open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
         }
     }
 
-    open func getCroppedSignature() -> UIImage? {
+    @objc open func getCroppedSignature() -> UIImage? {
         return autoreleasepool {
             let fullRender = canvas.drawing.image(from: canvas.bounds, scale: scale)
             let bounds = self.scale(
@@ -57,9 +57,9 @@ open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
         }
     }
 
-    open var isEmpty: Bool { canvas.drawing.bounds.isEmpty }
+    @objc open var isEmpty: Bool { canvas.drawing.bounds.isEmpty }
 
-    open func clear(cache: Bool) {
+    @objc open func clear(cache: Bool) {
         canvas.drawing = PKDrawing()
     }
 
