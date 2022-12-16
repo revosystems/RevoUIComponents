@@ -30,6 +30,7 @@
 		BB7EFD3624126DE700439821 /* ImageViewDownloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD3524126DE700439821 /* ImageViewDownloadTest.swift */; };
 		BBE5C4832520BD7D00518888 /* SmallToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5C4822520BD7D00518888 /* SmallToast.swift */; };
 		C6B5A1A21A70A314B0152946 /* Pods_RevoUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */; };
+		EAA06BA6294C95E6002C4AC1 /* PencilKitSignatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA06BA5294C95E6002C4AC1 /* PencilKitSignatureView.swift */; };
 		EAFB2E9128A636FE00DCC645 /* UIImageView+Gravatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB2E9028A636FE00DCC645 /* UIImageView+Gravatar.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D577B97B44A8C400B4E69387 /* Pods-RevoUIComponentsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.debug.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E2DC0D9AE9E5E3E488C9A3D2 /* Pods-RevoUIComponents.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponents.debug.xcconfig"; path = "Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents.debug.xcconfig"; sourceTree = "<group>"; };
+		EAA06BA5294C95E6002C4AC1 /* PencilKitSignatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PencilKitSignatureView.swift; sourceTree = "<group>"; };
 		EAFB2E9028A636FE00DCC645 /* UIImageView+Gravatar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Gravatar.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -169,6 +171,7 @@
 			children = (
 				8D9F0D922358C3BA009CF3D2 /* AsyncButton.swift */,
 				8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */,
+				EAA06BA5294C95E6002C4AC1 /* PencilKitSignatureView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				8D9F0D932358C3BA009CF3D2 /* AsyncButton.swift in Sources */,
 				76C07EEE23683CBA00D59DF6 /* UIColorExtension.swift in Sources */,
 				8D9F0D722358C39D009CF3D2 /* SceneDelegate.swift in Sources */,
+				EAA06BA6294C95E6002C4AC1 /* PencilKitSignatureView.swift in Sources */,
 				8DCE0CC4235C6E220044EBA8 /* UIViewConstraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
