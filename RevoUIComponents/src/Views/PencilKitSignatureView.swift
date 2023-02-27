@@ -125,10 +125,7 @@ open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
     }
     
     public func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
-        guard let delegate else {
-            return
-        }
-        delegate.onBeginDrawing()
+        delegate?.onBeginDrawing()
     }
 }
 
