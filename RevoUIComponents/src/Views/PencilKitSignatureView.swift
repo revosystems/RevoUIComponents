@@ -1,6 +1,10 @@
 import UIKit
 import PencilKit
 
+@objc public protocol PencilKitSignatureViewDelegate {
+    func onBeginDrawing()
+}
+
 //https://github.com/alankarmisra/SwiftSignatureView/blob/master/Pod/Classes/SwiftSignatureView.swift
 open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
 
@@ -9,6 +13,8 @@ open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
     private lazy var canvas: PKCanvasView = PKCanvasView(frame: CGRect.zero)
 
     open var scale: CGFloat = 10.0
+    
+    @objc public var delegate:PencilKitSignatureViewDelegate?
     
     /// The gesture recognizer that the canvas uses to track touch events.
     open var drawingGestureRecognizer: UIGestureRecognizer? {
@@ -116,6 +122,10 @@ open class PencilKitSignatureView: UIView, PKCanvasViewDelegate {
         scaledRect.size.width *= factor
         scaledRect.size.height *= factor
         return scaledRect
+    }
+    
+    public func canvasViewDidBeginUsingTool(_ canvasView: PKCanvasView) {
+        delegate?.onBeginDrawing()
     }
 }
 
