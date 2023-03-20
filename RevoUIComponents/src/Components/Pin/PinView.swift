@@ -35,7 +35,8 @@ public class PinView : UIView {
         enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
     }
     
-    func setup(){
+    func setup(_ pinLength:Int){
+        length = pinLength
         createMainStack()
         addDots()
         stack.addArrangedSubview(UIView().height(constant: 40))
