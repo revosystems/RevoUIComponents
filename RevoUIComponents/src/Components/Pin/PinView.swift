@@ -35,7 +35,7 @@ public class PinView : UIView {
         enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
     }
     
-    func setup(_ pinLength:Int){
+    func setup(_ pinLength:Int = 4){
         length = pinLength
         createMainStack()
         addDots()

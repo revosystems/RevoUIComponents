@@ -21,7 +21,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     }
     
     @discardableResult
-    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white, pinLength:Int) -> Self {
+    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white, pinLength:Int = 4) -> Self {
         view.backgroundColor = bg
         view.tintColor = tint
         
