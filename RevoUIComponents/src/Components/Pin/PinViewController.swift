@@ -21,7 +21,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     }
     
     @discardableResult
-    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white) -> Self {
+    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white, pinLength:Int = 4) -> Self {
         view.backgroundColor = bg
         view.tintColor = tint
         
@@ -30,7 +30,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         stack.addArrangedSubview(innerStackView)
         addTitle()
         
-        addPinView()
+        addPinView(pinLength)
         //addSpacing(100)
         addActionButtons()
         stack.addArrangedSubview(UIView())
@@ -63,10 +63,10 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         innerStackView.addArrangedSubview(titleLabel)
     }
     
-    private func addPinView(){
+    private func addPinView(_ pinLength:Int){
         pinView.appearanceDelegate = self
         innerStackView.addArrangedSubview(pinView)
-        pinView.setup()
+        pinView.setup(pinLength)
     }
     
     public func pinView(configureButton:UIButton, size:CGFloat) {
