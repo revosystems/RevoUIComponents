@@ -19,11 +19,11 @@ public class PinView : UIView {
     var appearanceDelegate:PinViewAppearanceDelegate?
     
     private var stack:UIStackView!
-    private var dotsStackView:UIStackView!
+    private var dotsStackView:PinDotsView!
     
     var enteredPin = "" {
         didSet {
-            updateDots()
+            dotsStackView.update(pin: enteredPin)
             if enteredPin.count == length {
                 onPinComplete()
             }
@@ -53,30 +53,11 @@ public class PinView : UIView {
     }
     
     private func addDots(){
-        dotsStackView               = UIStackView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 50))
-        dotsStackView.axis          = .horizontal
-        dotsStackView.distribution  = .fillEqually
-        dotsStackView.spacing       = 20
-        
-        Array((0..<length)).each { count in
-            let dot = UIView(widthConstraint: CGFloat(dotSize), heightConstraint: dotSize)
-            dot.round(dotSize/2)    //TODO: Change for .circle() when RevoFoundation updated
-            dot.backgroundColor     = UIColor.clear //TODO: Use .border() when RevoFoundation updated
-            dot.layer.borderWidth   = 1
-            dot.layer.borderColor   = tintColor.cgColor
-            dotsStackView.addArrangedSubview(dot)
-        }
+        dotsStackView = PinDotsView(frame: CGRect(x: 0, y: 0, width: bounds.size.width, height: 50))
         stack.addArrangedSubview(dotsStackView)
+        dotsStackView.setup(length: length, size: dotSize)
     }
-    
-    private func updateDots(){
-        UIView.animate(withDuration: 0.2) { [unowned self] in
-            dotsStackView.subviews.eachWithIndex { (dot, index) in
-                dot.backgroundColor = index < enteredPin.count ? tintColor : .clear
-            }
-        }
-    }
-    
+        
     private func addButtons(){
         let buttonsVerticalStack            = UIStackView()
         buttonsVerticalStack.axis           = .vertical
@@ -101,7 +82,7 @@ public class PinView : UIView {
         }
         stack.addArrangedSubview(buttonsVerticalStack)
     }
-    
+        
     private func createNumberButton(_ number:Int) -> UIButton {
         let button = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
         button.setTitle("\(number)", for: .normal)
