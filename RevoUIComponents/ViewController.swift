@@ -9,6 +9,7 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var loading: UIView!
     @IBOutlet weak var gravatarView: UIImageView!
+    @IBOutlet weak var smallPinButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +64,21 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         pin.modalPresentationStyle = .fullScreen
         pin.isPinValid = { $0 == "0000" }
         present(pin, animated: true, completion: nil)
+    }
+    
+    @IBAction func onSmallPinPressed(_ sender: Any) {
+        let popoverContent = PinViewController().setup(.gray, tint: .white, size: .small)
+        popoverContent.modalPresentationStyle = UIModalPresentationStyle.popover
+        let popover = popoverContent.popoverPresentationController
+        
+        popoverContent.preferredContentSize = CGSizeMake(350,370)
+        popover?.delegate = popoverContent
+        popover?.sourceView = self.view
+        popover?.sourceRect = smallPinButton.frame
+        
+        popoverContent.isPinValid = { $0 == "0000" }
+        
+        present(popoverContent, animated: true, completion: nil)
     }
     
     func setupLoading(){

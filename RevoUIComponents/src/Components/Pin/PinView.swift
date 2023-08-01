@@ -12,7 +12,8 @@ public extension PinViewAppearanceDelegate {
 public class PinView : UIView {
     var length:Int = 4
     let dotSize:CGFloat     = 12.0
-    let buttonSize:CGFloat  = 85
+    
+    private var pinValues = pinValuesStruct()
     
     var isPinValid: ((_ pin:String)->Bool)!
     
@@ -35,8 +36,9 @@ public class PinView : UIView {
         enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
     }
     
-    func setup(_ pinLength:Int = 4){
+    func setup(_ pinLength:Int = 4, sizes:pinValuesStruct){
         length = pinLength
+        pinValues = sizes
         createMainStack()
         addDots()
         stack.addArrangedSubview(UIView().height(constant: 40))
@@ -84,12 +86,12 @@ public class PinView : UIView {
     }
         
     private func createNumberButton(_ number:Int) -> UIButton {
-        let button = UIButton(widthConstraint: buttonSize, heightConstraint: buttonSize)
+        let button = UIButton(widthConstraint: pinValues.buttonSize, heightConstraint: pinValues.buttonSize)
         button.setTitle("\(number)", for: .normal)
         button.tag = number
         button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
-        appearanceDelegate?.pinView(configureButton: button, size:buttonSize)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 35)
+        appearanceDelegate?.pinView(configureButton: button, size:pinValues.buttonSize)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: pinValues.numberSize)
         return button
     }
     

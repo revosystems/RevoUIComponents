@@ -1,16 +1,17 @@
 import UIKit
 import RevoFoundation
 
-public class PinViewController : UIViewController, PinViewAppearanceDelegate {
+public class PinViewController : UIViewController, PinViewAppearanceDelegate, UIPopoverPresentationControllerDelegate {
     
     var canCancel = false
     
     private var stack:UIStackView!
     private var innerStackView:UIStackView!
+    private var selectedSizeOption:sizeOptions!
+    
+    private var pinValues = pinValuesStruct()
     
     public let pinView = PinView()
-    
-    let pinHeight = 400
     
     public var isPinValid: ((_ pin:String)->Bool)! {
         didSet { pinValidProxy() }
@@ -20,13 +21,20 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         
     }
     
+    public enum sizeOptions{
+        case big, small
+    }
+    
     @discardableResult
-    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white, pinLength:Int = 4) -> Self {
+    public func setup(_ bg:UIColor = .gray, tint:UIColor = .white, pinLength:Int = 4, size:sizeOptions = .big) -> Self {
         view.backgroundColor = bg
         view.tintColor = tint
+        selectedSizeOption = size
+        
+        setupSizes()
         
         createMainStackView()
-        addSpacing((UIScreen.main.bounds.height - CGFloat(pinHeight + 120)) / 2 )
+        addSpacing((UIScreen.main.bounds.height - CGFloat(pinValues.pinHeight + 120)) / 2 )
         stack.addArrangedSubview(innerStackView)
         addTitle()
         
@@ -36,6 +44,25 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         stack.addArrangedSubview(UIView())
         //addSpacing(200)
         return self
+    }
+    
+    private func setupSizes(){
+        switch selectedSizeOption{
+        case .big:
+            pinValues.pinHeight  = 400
+            pinValues.buttonSize = 85
+            pinValues.numberSize = 35
+        case .small:
+            pinValues.pinHeight = 900
+            pinValues.buttonSize = 45
+            pinValues.numberSize = 20
+            title = ""
+            
+        case .none:
+            pinValues.pinHeight  = 400
+            pinValues.buttonSize = 85
+            pinValues.numberSize = 35
+        }
     }
     
     private func addSpacing(_ size:CGFloat){
@@ -49,7 +76,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
         view.addSubview(stack)
         stack.equalSizeAs(view)
         
-        innerStackView              = UIStackView(frame: CGRect(x: 0, y: 0, width: 300, height: pinHeight))
+        innerStackView              = UIStackView(frame: CGRect(x: 0, y: 0, width: 300, height: pinValues.pinHeight))
         innerStackView.axis         = .vertical
         innerStackView.alignment    = .center
     }
@@ -66,7 +93,7 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     private func addPinView(_ pinLength:Int){
         pinView.appearanceDelegate = self
         innerStackView.addArrangedSubview(pinView)
-        pinView.setup(pinLength)
+        pinView.setup(pinLength, sizes:pinValues)
     }
     
     public func pinView(configureButton:UIButton, size:CGFloat) {
@@ -120,4 +147,8 @@ public class PinViewController : UIViewController, PinViewAppearanceDelegate {
     }
 }
 
-
+struct pinValuesStruct{
+    var pinHeight:Int!
+    var buttonSize:CGFloat!
+    var numberSize:CGFloat!
+}
