@@ -13,7 +13,7 @@ public class PinView : UIView {
     var length:Int = 4
     let dotSize:CGFloat     = 12.0
     
-    private var pinValues = pinValuesStruct()
+    private var pinSize:PinViewController.Size!
     
     var isPinValid: ((_ pin:String)->Bool)!
     
@@ -36,9 +36,9 @@ public class PinView : UIView {
         enteredPin = String(enteredPin.suffix(enteredPin.count - 1))
     }
     
-    func setup(_ pinLength:Int = 4, sizes:pinValuesStruct){
+    func setup(_ pinLength:Int = 4, size:PinViewController.Size){
         length = pinLength
-        pinValues = sizes
+        pinSize = size
         createMainStack()
         addDots()
         stack.addArrangedSubview(UIView().height(constant: 40))
@@ -86,12 +86,12 @@ public class PinView : UIView {
     }
         
     private func createNumberButton(_ number:Int) -> UIButton {
-        let button = UIButton(widthConstraint: pinValues.buttonSize, heightConstraint: pinValues.buttonSize)
+        let button = UIButton(widthConstraint: pinSize.buttonSize, heightConstraint: pinSize.buttonSize)
         button.setTitle("\(number)", for: .normal)
         button.tag = number
         button.addTarget(self, action: #selector(onButtonPressed), for: .touchUpInside)
-        appearanceDelegate?.pinView(configureButton: button, size:pinValues.buttonSize)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: pinValues.numberSize)
+        appearanceDelegate?.pinView(configureButton: button, size:pinSize.buttonSize)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: pinSize.buttonTextSize)
         return button
     }
     

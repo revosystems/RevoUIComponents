@@ -65,20 +65,11 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         pin.isPinValid = { $0 == "0000" }
         present(pin, animated: true, completion: nil)
     }
-    
+
     @IBAction func onSmallPinPressed(_ sender: Any) {
-        let popoverContent = PinViewController().setup(.gray, tint: .white, size: .small)
-        popoverContent.modalPresentationStyle = UIModalPresentationStyle.popover
-        let popover = popoverContent.popoverPresentationController
-        
-        popoverContent.preferredContentSize = CGSizeMake(350,370)
-        popover?.delegate = popoverContent
-        popover?.sourceView = self.view
-        popover?.sourceRect = smallPinButton.frame
-        
+        let popoverContent = PinViewController().asPopup(background: .gray, tint: .white, sender: smallPinButton)
         popoverContent.isPinValid = { $0 == "0000" }
-        
-        present(popoverContent, animated: true, completion: nil)
+        present(popoverContent, animated: true)
     }
     
     func setupLoading(){
