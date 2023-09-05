@@ -77,7 +77,13 @@ public class Alert : UIAlertController {
         self.addTextField() { (textField) in
             textField.placeholder = placeholder
         }
-        show(parentVc, sender: sender, animated: animated, then: then)
+        show(parentVc, sender: sender, animated: animated) { result in
+            var result2 = result
+            if case .ok = result2 {
+                if let text = self.textFields?[0].text { result2 = .text(inputText: text) }
+            }
+            then(result2)
+        }
     }
     
     public func showWithTextInput(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, placeholder:String = "") async -> AlertResult {
