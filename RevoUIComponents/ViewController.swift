@@ -59,6 +59,14 @@ class ViewController: UIViewController, ContentStatusActionDelegate {
         }
     }
     
+    @IBAction func onAlertWithTextPressed(_ sender: Any) {
+        Alert("hola input", destroyText: "Delete").showWithTextInput(placeholder: "age") { result in
+            if case .text(let input) = result, !input.isEmpty {
+                print(input)
+            }
+        }
+    }
+    
     @IBAction func onShowPinPressed(_ sender: Any) {
         let pin = PinViewController().setup(.gray, tint: .white)
         pin.modalPresentationStyle = .fullScreen

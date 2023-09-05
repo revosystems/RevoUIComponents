@@ -57,7 +57,7 @@
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oc6-BJ-AA9">
-                                <rect key="frame" x="254" y="90" width="33" height="30"/>
+                                <rect key="frame" x="233" y="64" width="33" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Alert"/>
                                 <connections>
@@ -74,7 +74,7 @@
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lca-T1-eJf">
-                                <rect key="frame" x="312" y="91" width="38" height="30"/>
+                                <rect key="frame" x="286" y="64" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Toast"/>
                                 <connections>
@@ -97,6 +97,14 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Show small pin"/>
                                 <connections>
                                     <action selector="onSmallPinPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cy7-cG-Jo1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mds-xj-hpA">
+                                <rect key="frame" x="233" y="91" width="96" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Alert with text"/>
+                                <connections>
+                                    <action selector="onAlertWithTextPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c40-BZ-zOJ"/>
                                 </connections>
                             </button>
                         </subviews>

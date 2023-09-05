@@ -74,15 +74,14 @@ public class Alert : UIAlertController {
     }
     
     public func showWithTextInput(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, placeholder:String = "", then:@escaping(_ result:AlertResult)->Void) {
-        self.addTextField() { (textField) in
-            textField.placeholder = placeholder
-        }
-        show(parentVc, sender: sender, animated: animated) { result in
-            var result2 = result
-            if case .ok = result2 {
-                if let text = self.textFields?[0].text { result2 = .text(inputText: text) }
+        
+        addTextField() { $0.placeholder = placeholder }
+        
+        show(parentVc, sender: sender, animated: animated) { [unowned self] result in
+            if case .ok = result, let text = textFields?[0].text {
+                return then(.text(inputText: text))
             }
-            then(result2)
+            then(result)
         }
     }
     
