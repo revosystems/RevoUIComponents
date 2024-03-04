@@ -21,8 +21,15 @@ import UIKit
         notificationView.round(height/2)
         notificationView.addSubview(textView)
     }
+    
+    @objc public class func show(_ text:String, bgColor:UIColor = UIColor.white, height:CGFloat = 30, minWidth:CGFloat = 300, duration:Double = 2, font:UIFont? = .systemFont(ofSize: 12), textColor:UIColor = .black) {
+        Self.shared.setText(text, font: font)
+        let contentWidth = Self.shared.textView.intrinsicContentSize.width
+        let width = min(UIScreen.main.bounds.width - 40, max(minWidth, contentWidth + 40))
+        show(text, bgColor: bgColor, height: height, width: width, duration: duration, font: font, textColor: textColor)
+    }
 
-    @objc public class func show(_ text:String, bgColor:UIColor = UIColor.white, height:CGFloat = 30, width:CGFloat = 150, duration:Double = 2, font:UIFont? = .systemFont(ofSize: 12), textColor:UIColor = .black){
+    @objc private class func show(_ text:String, bgColor:UIColor = UIColor.white, height:CGFloat = 30, width:CGFloat = 150, duration:Double = 2, font:UIFont? = .systemFont(ofSize: 12), textColor:UIColor = .black){
         guard let activeWindow = Self.shared.activeWindow else { return }
         Self.shared.height          = height
         Self.shared.width           = width
