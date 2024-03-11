@@ -33,6 +33,6 @@ echo "-- Pushing tag $1"
 git push origin "$1"
 
 echo "-- Pushing repo"
-bundle exec pod repo push trunk "$PODSPEC_FILE" --allow-warnings --use-libraries --verbose
+pod trunk push "$PODSPEC_FILE" --allow-warnings
 echo "-- Pod published"%
 
