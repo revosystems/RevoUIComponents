@@ -92,10 +92,11 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
+  arm64-darwin-23
   x86_64-darwin-23
 
 DEPENDENCIES
   cocoapods
 
 BUNDLED WITH
-   2.4.10
+   2.4.22
