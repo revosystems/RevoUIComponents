@@ -18,7 +18,7 @@
     },
     "description": "A set of ui components that are used into Revo projects",
     "homepage": "https://revo.works",
-    "author": {
+    "authors": {
         "Jordi Puigdellívol": "jordi@gloobus.net"
     },
     "social_media_url": "https://instagram.com/badchoice2",
