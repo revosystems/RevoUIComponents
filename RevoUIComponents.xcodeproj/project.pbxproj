@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 53;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		3C1608ACE370F1305FB7286D /* Pods_RevoUIComponentsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */; };
+		558E047F2BB56653003EC863 /* ScanCodeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558E047C2BB56653003EC863 /* ScanCodeController.swift */; };
+		558E04802BB56653003EC863 /* ScanQRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558E047D2BB56653003EC863 /* ScanQRCodeView.swift */; };
 		76C07EE82360D82B00D59DF6 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EE72360D82B00D59DF6 /* PinView.swift */; };
 		76C07EEA2366341800D59DF6 /* ContentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EE92366341800D59DF6 /* ContentStatus.swift */; };
 		76C07EEE23683CBA00D59DF6 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C07EED23683CBA00D59DF6 /* UIColorExtension.swift */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		540B36196511EEB9EAC42238 /* Pods-RevoUIComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponents.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents.release.xcconfig"; sourceTree = "<group>"; };
+		558E047C2BB56653003EC863 /* ScanCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeController.swift; sourceTree = "<group>"; };
+		558E047D2BB56653003EC863 /* ScanQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRCodeView.swift; sourceTree = "<group>"; };
 		76C07EE72360D82B00D59DF6 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		76C07EE92366341800D59DF6 /* ContentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStatus.swift; sourceTree = "<group>"; };
 		76C07EED23683CBA00D59DF6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -102,6 +106,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		558E047E2BB56653003EC863 /* ScanQRCode */ = {
+			isa = PBXGroup;
+			children = (
+				558E047C2BB56653003EC863 /* ScanCodeController.swift */,
+				558E047D2BB56653003EC863 /* ScanQRCodeView.swift */,
+			);
+			path = ScanQRCode;
+			sourceTree = "<group>";
+		};
 		76C07EE62360D81900D59DF6 /* Pin */ = {
 			isa = PBXGroup;
 			children = (
@@ -197,6 +210,7 @@
 				BBE5C4822520BD7D00518888 /* SmallToast.swift */,
 				76C07EE92366341800D59DF6 /* ContentStatus.swift */,
 				76C07EE62360D81900D59DF6 /* Pin */,
+				558E047E2BB56653003EC863 /* ScanQRCode */,
 				8DF341242432084000654033 /* LoadingAnimation.swift */,
 			);
 			path = Components;
@@ -402,11 +416,13 @@
 				BB4091272418EEB000208C9C /* AlertController.swift in Sources */,
 				8D9F0D952358C4F5009CF3D2 /* CircularProgress.swift in Sources */,
 				8DCE0CC7235F399D0044EBA8 /* Toast.swift in Sources */,
+				558E047F2BB56653003EC863 /* ScanCodeController.swift in Sources */,
 				8D3B0C9523A00865003C1847 /* UIImageViewExtension.swift in Sources */,
 				EAFB2E9128A636FE00DCC645 /* UIImageView+Gravatar.swift in Sources */,
 				8D9F0D742358C39D009CF3D2 /* ViewController.swift in Sources */,
 				EAF7FCCF2A5FFE54007BE95F /* PinDotsView.swift in Sources */,
 				8D9F0D992358D6AC009CF3D2 /* PinViewController.swift in Sources */,
+				558E04802BB56653003EC863 /* ScanQRCodeView.swift in Sources */,
 				BBE5C4832520BD7D00518888 /* SmallToast.swift in Sources */,
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
 				76C07EEA2366341800D59DF6 /* ContentStatus.swift in Sources */,
