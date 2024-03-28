@@ -29,6 +29,7 @@
 		8DF341252432084000654033 /* LoadingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF341242432084000654033 /* LoadingAnimation.swift */; };
 		BB4091272418EEB000208C9C /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4091262418EEB000208C9C /* AlertController.swift */; };
 		BB40912B24194EAE00208C9C /* AlertTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB40912A24194EAE00208C9C /* AlertTest.swift */; };
+		BB7458F02BB5BAE300476EE7 /* OTPView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7458EF2BB5BAE300476EE7 /* OTPView.swift */; };
 		BB7EFD3624126DE700439821 /* ImageViewDownloadTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7EFD3524126DE700439821 /* ImageViewDownloadTest.swift */; };
 		BBE5C4832520BD7D00518888 /* SmallToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE5C4822520BD7D00518888 /* SmallToast.swift */; };
 		C6B5A1A21A70A314B0152946 /* Pods_RevoUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AF99C18F735E177CADFEB42 /* Pods_RevoUIComponents.framework */; };
@@ -76,6 +77,7 @@
 		9361B93501F2F40365BA4957 /* Pods_RevoUIComponentsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RevoUIComponentsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB4091262418EEB000208C9C /* AlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		BB40912A24194EAE00208C9C /* AlertTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTest.swift; sourceTree = "<group>"; };
+		BB7458EF2BB5BAE300476EE7 /* OTPView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPView.swift; sourceTree = "<group>"; };
 		BB7EFD3524126DE700439821 /* ImageViewDownloadTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewDownloadTest.swift; sourceTree = "<group>"; };
 		BBE5C4822520BD7D00518888 /* SmallToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmallToast.swift; sourceTree = "<group>"; };
 		C51659EAE901648BDB812980 /* Pods-RevoUIComponentsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponentsTests.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponentsTests/Pods-RevoUIComponentsTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				8D9F0D922358C3BA009CF3D2 /* AsyncButton.swift */,
 				8D9F0D942358C4F5009CF3D2 /* CircularProgress.swift */,
 				EAA06BA5294C95E6002C4AC1 /* PencilKitSignatureView.swift */,
+				BB7458EF2BB5BAE300476EE7 /* OTPView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				8D9F0D702358C39D009CF3D2 /* AppDelegate.swift in Sources */,
 				76C07EEA2366341800D59DF6 /* ContentStatus.swift in Sources */,
 				76C07EE82360D82B00D59DF6 /* PinView.swift in Sources */,
+				BB7458F02BB5BAE300476EE7 /* OTPView.swift in Sources */,
 				8DF341252432084000654033 /* LoadingAnimation.swift in Sources */,
 				8D9F0D932358C3BA009CF3D2 /* AsyncButton.swift in Sources */,
 				76C07EEE23683CBA00D59DF6 /* UIColorExtension.swift in Sources */,
