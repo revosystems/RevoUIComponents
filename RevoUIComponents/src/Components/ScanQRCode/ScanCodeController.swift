@@ -6,7 +6,7 @@ public protocol ScanCodeControllerDelegate : AnyObject {
     func scanController(onScanned code:String)
 }
 
-public class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
+open class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     
     @IBOutlet weak private var scanView:ScanQRCodeView!
     @IBOutlet weak private var titleLabel: UILabel!
@@ -17,11 +17,12 @@ public class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
     public override func viewDidLoad() {
         titleLabel.text = self.title
         infoLabel.isHidden = true
+        scanView.setupCaptureSession(delegate:self)
     }
     
     public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scanView.setupCaptureSession(delegate:self)
+        scanView.setupPreviewLayer()
     }
     
     public override func viewDidAppear(_ animated: Bool) {

@@ -60,7 +60,9 @@ protocol ScanQRCodeViewDelegate{
             failed()
             return
         }
-        
+    }
+    
+    func setupPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.videoGravity = .resizeAspectFill
         
