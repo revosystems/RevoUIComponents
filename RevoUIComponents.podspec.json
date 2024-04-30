@@ -1,6 +1,6 @@
 {
     "name": "RevoUIComponents",
-    "version": "0.0.49",
+    "version": "0.0.50",
     "summary": "UI Components used across Revo projects.",
     "license": "MIT",
     "swift_version": "5.0",
@@ -9,7 +9,7 @@
     },
     "source": {
         "git": "https://github.com/revosystems/revouicomponents.git",
-        "tag": "0.0.49"
+        "tag": "0.0.50"
     },
     "dependencies":{
         "RevoFoundation": [
