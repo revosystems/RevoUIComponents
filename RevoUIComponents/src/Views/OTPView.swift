@@ -1,15 +1,15 @@
 import UIKit
 import RevoFoundation
 
-protocol OTPViewDelegate : AnyObject {
+public protocol OTPViewDelegate : AnyObject {
     func otp(codeEntered code:String);
 }
 
-class OTPView : UIStackView, OTPTextFieldDelegate {
+public class OTPView : UIStackView, OTPTextFieldDelegate {
     
-    weak var delegate:OTPViewDelegate?
+    public weak var delegate:OTPViewDelegate?
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         arrangedSubviews.each { element in
             (element as? UITextField)?.addTarget(self, action:#selector(onPinTextFieldChanged(_:)), for: .editingChanged)
             (element as? UITextField)?.addTarget(self, action:#selector(onPinTextFieldStarted(_:)), for: .editingDidBegin)
@@ -23,7 +23,7 @@ class OTPView : UIStackView, OTPTextFieldDelegate {
     }
     
     @discardableResult
-    override func becomeFirstResponder() -> Bool {
+    public override func becomeFirstResponder() -> Bool {
         arrangedSubviews.first {
             $0 is UITextField
         }?.becomeFirstResponder() ?? false
@@ -49,7 +49,7 @@ class OTPView : UIStackView, OTPTextFieldDelegate {
         textField.text = ""
     }
     
-    func onDeletedBackward(_ textField: UITextField) {
+    public func onDeletedBackward(_ textField: UITextField) {
         
         let index = arrangedSubviews.firstIndex(of: textField) ?? 0
         guard index != 0 else { return }
