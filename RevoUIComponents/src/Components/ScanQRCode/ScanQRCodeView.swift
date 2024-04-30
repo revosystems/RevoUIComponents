@@ -2,17 +2,17 @@ import UIKit
 import AVFoundation
 
 
-protocol ScanQRCodeViewDelegate{
+public protocol ScanQRCodeViewDelegate{
     func scanQrCode(found code:String)
 }
 
-@objc class ScanQRCodeView : UIView, AVCaptureMetadataOutputObjectsDelegate {
+@objc public class ScanQRCodeView : UIView, AVCaptureMetadataOutputObjectsDelegate {
     
     var previewLayer:AVCaptureVideoPreviewLayer!
     var captureSession: AVCaptureSession!
     var delegate:ScanQRCodeViewDelegate?
     
-    func start(){
+    public func start(){
         if (captureSession?.isRunning == false) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.captureSession.startRunning()
@@ -20,7 +20,7 @@ protocol ScanQRCodeViewDelegate{
         }
     }
         
-    func stop(){
+    public func stop(){
         if (captureSession?.isRunning == true) {
             DispatchQueue.global(qos: .userInitiated).async { [weak self] in
                 self?.captureSession.stopRunning()
@@ -29,7 +29,7 @@ protocol ScanQRCodeViewDelegate{
     }   
 
     
-    func setupCaptureSession(delegate:ScanQRCodeViewDelegate? = nil){
+    public func setupCaptureSession(delegate:ScanQRCodeViewDelegate? = nil){
         self.delegate = delegate
         captureSession = AVCaptureSession()
 
@@ -62,7 +62,7 @@ protocol ScanQRCodeViewDelegate{
         }
     }
     
-    func setupPreviewLayer() {
+    public func setupPreviewLayer() {
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.videoGravity = .resizeAspectFill
         
@@ -88,7 +88,7 @@ protocol ScanQRCodeViewDelegate{
     
 
 
-    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+    public func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         captureSession.stopRunning()
 
         if let metadataObject = metadataObjects.first {
