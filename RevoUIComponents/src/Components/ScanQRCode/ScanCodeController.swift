@@ -35,7 +35,7 @@ open class ScanCodeController : UIViewController, ScanQRCodeViewDelegate {
         scanView.stop()
     }
     
-    func scanQrCode(found code:String){
+    public func scanQrCode(found code:String){
         delegate?.scanController(onScanned: code)
     }
 }
