@@ -53,6 +53,7 @@
 		540B36196511EEB9EAC42238 /* Pods-RevoUIComponents.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RevoUIComponents.release.xcconfig"; path = "Target Support Files/Pods-RevoUIComponents/Pods-RevoUIComponents.release.xcconfig"; sourceTree = "<group>"; };
 		558E047C2BB56653003EC863 /* ScanCodeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanCodeController.swift; sourceTree = "<group>"; };
 		558E047D2BB56653003EC863 /* ScanQRCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanQRCodeView.swift; sourceTree = "<group>"; };
+		559FEAD52CE4C17D00BD64E7 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		76C07EE72360D82B00D59DF6 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		76C07EE92366341800D59DF6 /* ContentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStatus.swift; sourceTree = "<group>"; };
 		76C07EED23683CBA00D59DF6 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -130,6 +131,7 @@
 		8D9F0D632358C39D009CF3D2 = {
 			isa = PBXGroup;
 			children = (
+				559FEAD52CE4C17D00BD64E7 /* Package.swift */,
 				8D9F0D6E2358C39D009CF3D2 /* RevoUIComponents */,
 				8D9F0D852358C3A0009CF3D2 /* RevoUIComponentsTests */,
 				8D9F0D6D2358C39D009CF3D2 /* Products */,
