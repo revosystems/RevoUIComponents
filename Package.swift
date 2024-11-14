@@ -13,17 +13,16 @@ let package = Package(
         ),
     ],
     dependencies: [
-        .package(url: "https://github.com/revosystems/revofoundation.git", .upToNextMinor(from: "0.2.0"))
+        .package(
+            name: "RevoUIComponents",
+            url: "https://github.com/revosystems/foundation.git",
+            .exact("0.2.22"))
     ],
     targets: [
         .target(
             name: "RevoUIComponents",
-            dependencies: [
-                .product(name: "RevoFoundation", package: "revofoundation")
-            ],
+            dependencies: ["RevoFoundation"],
             path: "RevoUIComponents/src",
-            exclude: [],
-            resources: [] // Afegeix recursos si n'hi ha
         ),
     ],
     swiftLanguageVersions: [.v5]
