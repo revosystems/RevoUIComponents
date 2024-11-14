@@ -16,7 +16,7 @@ let package = Package(
         .package(
             name: "RevoFoundation",
             url: "https://github.com/revosystems/foundation.git",
-            .upToNextMinor(from: "0.2.22"))
+            .upToNextMinor(from: "0.3.1"))
     ],
     targets: [
         .target(
