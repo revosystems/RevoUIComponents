@@ -14,9 +14,9 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            name: "RevoUIComponents",
+            name: "RevoFoundation",
             url: "https://github.com/revosystems/foundation.git",
-            .exact("0.2.22"))
+            .upToNextMinor(from: "0.2.22"))
     ],
     targets: [
         .target(
