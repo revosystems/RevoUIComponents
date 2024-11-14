@@ -10,20 +10,20 @@ let package = Package(
         .library(
             name: "RevoUIComponents",
             targets: ["RevoUIComponents"]
-        ),
+        )
     ],
     dependencies: [
         .package(
             name: "RevoFoundation",
-            url: "https://github.com/revosystems/foundation.git",
-            .upToNextMinor(from: "0.3.1"))
+            url: "https://github.com/revosystems/foundation.git", .upToNextMinor(from: "0.3.1")
+        )
     ],
     targets: [
         .target(
             name: "RevoUIComponents",
             dependencies: ["RevoFoundation"],
-            path: "RevoUIComponents/src",
-        ),
+            path: "RevoUIComponents/src"
+        )
     ],
     swiftLanguageVersions: [.v5]
 )
