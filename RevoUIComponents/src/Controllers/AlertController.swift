@@ -12,29 +12,24 @@ public enum AlertResult {
 public class Alert : UIAlertController {
     var then:((_ result:AlertResult)->Void)?
     
-    public convenience init(_ alert:String, message:String = "", okText:String? = "Ok", cancelText:String? = nil, destroyText:String? = nil){
-                
-        self.init(title: alert, message: message, preferredStyle: .alert)
-        
-        if okText != nil {
-            addAction(.init(title: okText, style: .default) { action in self.then?(AlertResult.ok) })
-        }
-        
-        if cancelText != nil {
-            addAction(.init(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel) })
-        }
-        
-        if destroyText != nil {
-            addAction(.init(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy) })
-        }
+    public convenience init(_ alert:String, message:String = "", okText:String? = "Ok", cancelText:String? = nil, destroyText:String? = nil) {
+        self.init(alert, message: message, okText: okText, cancelText: cancelText, destroyText: destroyText, preferredStyle: .alert)
     }
     
-    public convenience init(action:String, message:String = "", actions:[String] = [], cancelText:String? = nil, destroyText:String? = nil){
+    public convenience init(action:String, message:String = "", actions:[String] = [], cancelText:String? = nil, destroyText:String? = nil) {
+        self.init(action, message: message, actions: actions, cancelText: cancelText, destroyText: destroyText, preferredStyle: .actionSheet)
+    }
+    
+    public convenience init(_ title:String, message:String = "", actions:[String] = [], okText:String? = nil, cancelText:String? = nil, destroyText:String? = nil, preferredStyle: UIAlertController.Style) {
         
-        self.init(title: action, message: message, preferredStyle: .actionSheet)
+        self.init(title: title, message: message, preferredStyle: preferredStyle)
                 
         actions.eachWithIndex { title, index in
             addAction(.init(title: title, style: .default) { action in self.then?(.action(index: index)) })
+        }
+        
+        if okText != nil {
+            addAction(.init(title: okText, style: .default) { action in self.then?(AlertResult.ok) })
         }
         
         if cancelText != nil {
