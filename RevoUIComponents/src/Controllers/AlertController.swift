@@ -12,15 +12,15 @@ public enum AlertResult {
 public class Alert : UIAlertController {
     var then:((_ result:AlertResult)->Void)?
     
-    public convenience init(_ alert:String, message:String = "", okText:String? = "Ok", cancelText:String? = nil, destroyText:String? = nil) {
+    public convenience init(_ alert:String, message:String? = nil, okText:String? = "Ok", cancelText:String? = nil, destroyText:String? = nil) {
         self.init(alert, message: message, okText: okText, cancelText: cancelText, destroyText: destroyText, preferredStyle: .alert)
     }
     
-    public convenience init(action:String, message:String = "", actions:[String] = [], cancelText:String? = nil, destroyText:String? = nil) {
+    public convenience init(action:String, message:String? = nil, actions:[String] = [], cancelText:String? = nil, destroyText:String? = nil) {
         self.init(action, message: message, actions: actions, cancelText: cancelText, destroyText: destroyText, preferredStyle: .actionSheet)
     }
     
-    public convenience init(_ title:String, message:String = "", actions:[String] = [], okText:String? = nil, cancelText:String? = nil, destroyText:String? = nil, preferredStyle: UIAlertController.Style) {
+    public convenience init(_ title:String, message:String? = nil, actions:[String] = [], okText:String? = nil, cancelText:String? = nil, destroyText:String? = nil, preferredStyle: UIAlertController.Style) {
         
         self.init(title: title, message: message, preferredStyle: preferredStyle)
                 
