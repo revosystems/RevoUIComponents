@@ -25,25 +25,25 @@ public class Alert : UIAlertController {
         self.init(title: title, message: message, preferredStyle: preferredStyle)
                 
         actions.eachWithIndex { title, index in
-            addAction(.init(title: title, style: .default) { action in self.then?(.action(index: index)) })
+            addAction(.init(title: title, style: .default) { [weak self] action in self?.then?(.action(index: index)) })
         }
         
         if okText != nil {
-            addAction(.init(title: okText, style: .default) { action in self.then?(AlertResult.ok) })
+            addAction(.init(title: okText, style: .default) { [weak self] action in self?.then?(AlertResult.ok) })
         }
         
         if cancelText != nil {
-            addAction(.init(title: cancelText,  style: .cancel) { action in self.then?(AlertResult.cancel) })
+            addAction(.init(title: cancelText,  style: .cancel) { [weak self] action in self?.then?(AlertResult.cancel) })
         }
         
         if destroyText != nil {
-            addAction(.init(title: destroyText, style: .destructive) { action in self.then?(AlertResult.destroy) })
+            addAction(.init(title: destroyText, style: .destructive) { [weak self] action in self?.then?(AlertResult.destroy) })
         }
     }
     
     public func addAction(_ title:String, value:Int){
-        addAction(.init(title: title, style: .default) {
-            action in self.then?(.action(index: value))
+        addAction(.init(title: title, style: .default) { [weak self] _ in
+            self?.then?(.action(index: value))
         })
     }
 
