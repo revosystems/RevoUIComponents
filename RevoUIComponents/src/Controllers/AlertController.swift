@@ -9,6 +9,18 @@ public enum AlertResult {
     case text(inputText:String)
 }
 
+public struct AlertAction {
+    public let title:String
+    public let style:UIAlertAction.Style
+    public let resultType:AlertResult
+    
+    public init(title: String, style: UIAlertAction.Style = .default, resultType: AlertResult) {
+        self.title = title
+        self.style = style
+        self.resultType = resultType
+    }
+}
+
 public class Alert : UIAlertController {
     var then:((_ result:AlertResult)->Void)?
     
@@ -38,6 +50,18 @@ public class Alert : UIAlertController {
         
         if destroyText != nil {
             addAction(.init(title: destroyText, style: .destructive) { [weak self] action in self?.then?(AlertResult.destroy) })
+        }
+    }
+    
+    public convenience init(_ title:String, message:String? = nil, customActions:[AlertAction], preferredActionIndex: Int? = nil) {
+        self.init(title: title, message: message, preferredStyle: .alert)
+        
+        customActions.eachWithIndex { action, index in
+            let mapped = UIAlertAction(title: action.title, style: action.style) { [weak self] _ in self?.then?(action.resultType) }
+            addAction(mapped)
+            if let preferredActionIndex, preferredActionIndex == index {
+                preferredAction = mapped
+            }
         }
     }
     
