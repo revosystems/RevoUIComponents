@@ -85,7 +85,6 @@ public class Popover: NSObject {
         }
     }
     
-    @MainActor
     deinit {
         PopoverEvent.remove(.EVENT_POPUP_DISMISSED, target: self)
         then = nil
