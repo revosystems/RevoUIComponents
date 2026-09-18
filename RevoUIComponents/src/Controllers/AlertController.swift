@@ -23,6 +23,7 @@ public struct AlertAction {
 
 public class Alert : UIAlertController {
     var then:((_ result:AlertResult)->Void)?
+    var maxLength:Int?
     
     public convenience init(_ alert:String, message:String? = nil, okText:String? = "Ok", cancelText:String? = nil, destroyText:String? = nil) {
         self.init(alert, message: message, okText: okText, cancelText: cancelText, destroyText: destroyText, preferredStyle: .alert)
@@ -92,9 +93,14 @@ public class Alert : UIAlertController {
         }
     }
     
-    public func showWithTextInput(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, placeholder:String = "", then:@escaping(_ result:AlertResult)->Void) {
+    public func showWithTextInput(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, placeholder:String = "", maxLength:Int? = nil, then:@escaping(_ result:AlertResult)->Void) {
         
-        addTextField() { $0.placeholder = placeholder }
+        self.maxLength = maxLength
+        
+        addTextField() { [unowned self] in
+            $0.placeholder = placeholder
+            $0.delegate    = self
+        }
         
         show(parentVc, sender: sender, animated: animated) { [unowned self] result in
             if case .ok = result, let text = textFields?[0].text {
@@ -104,9 +110,9 @@ public class Alert : UIAlertController {
         }
     }
     
-    public func showWithTextInput(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, placeholder:String = "") async -> AlertResult {
+    public func showWithTextInput(_ parentVc:UIViewController? = nil, sender:UIView? = nil, animated:Bool = true, placeholder:String = "", maxLength:Int? = nil) async -> AlertResult {
         await withCheckedContinuation { continuation in
-            showWithTextInput(parentVc, sender:sender, animated:animated, placeholder:placeholder) {
+            showWithTextInput(parentVc, sender:sender, animated:animated, placeholder:placeholder, maxLength:maxLength) {
                 continuation.resume(returning: $0)
             }
         }
@@ -129,4 +135,15 @@ public class Alert : UIAlertController {
     private func getNextFakeResult() -> AlertResult?{
         Self.fakeResults?.pop()
     }
+}
+
+extension Alert : UITextFieldDelegate {
+    
+    public func textField(_ textField:UITextField, shouldChangeCharactersIn range:NSRange, replacementString string:String) -> Bool {
+        guard let maxLength else { return true }
+        let current = textField.text ?? ""
+        guard let range = Range(range, in:current) else { return true }
+        return current.replacingCharacters(in:range, with:string).count <= maxLength
+    }
+    
 }
